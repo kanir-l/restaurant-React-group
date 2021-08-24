@@ -9,10 +9,11 @@ function Admin() {
         return(
             <React.Fragment key={booking.id}>
                 <p>ID: {booking.id}</p>
-                <p>GUEST: {booking.guest}</p>  
+                <p>GUEST: {booking.numberOfGuests}</p>  
                 <p>DATE: {booking.date}</p>
                 <p>TIME: {booking.time}</p>
-                <p>NAME: {booking.name}</p>
+                <p>FIRSTNAME: {booking.firstName}</p>
+                <p>LASTNAME: {booking.lastName}</p>
                 <p>PHONE: {booking.phone}</p>
                 <p>EMAIL: {booking.email}</p>
             </React.Fragment>
