@@ -1,11 +1,13 @@
 export class BookingModel {
     constructor(
         public id: number,
-        public guest: number,
+        public numberOfGuests: number,
         public date: Date,
         public time: number,
-        public name: string,
+        public firstName: string,
+        public lastName: string,
         public phone: number,
-        public email: string
+        public email: string,
+        public specialRequest: string
     ) {}
 }
