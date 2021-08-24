@@ -16,6 +16,9 @@ function Header() {
                         <li>
                             <Link to='/contact'>CONTACT</Link>
                         </li>
+                        <li>
+                            <Link to='/admin'>ADMIN</Link>
+                        </li>
                     </ul>
                 </nav>
             </div>

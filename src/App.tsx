@@ -11,8 +11,8 @@ import Admin from './pages/Admin';
 function App() {
   return (
     <div className="App">
-      <Router>
 
+      <Router>
         <Header></Header>
 
         <Switch>
