@@ -9,7 +9,10 @@ function Reservations() {
             <button onClick={() => {console.log("Minus clicked!")}}>Minus</button>
             <input type="number" name="numberOfGuests" id="numberOfGuests"></input>
             <button onClick={() => {console.log("Plus clicked!")}}>Plus</button>
-            <Button content="Continue"></Button>
+            <Button content="Continue" />
+            <h4>Please select a time</h4>
+            <Button content="18:00" />
+            <Button content="21:00" />
         </div>
     )
 }
