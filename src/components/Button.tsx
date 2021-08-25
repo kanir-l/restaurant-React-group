@@ -1,11 +1,11 @@
 
 interface IButtonProps {
-    type: string;
+    content: string;
 }
 
 function Button(props: IButtonProps) {
     return (
-        <button>{props}</button>
+        <button>{props.content}</button>
     );
 }
 
