@@ -13,10 +13,11 @@ function Reservations() {
             <button onClick={() => {console.log("Minus clicked!")}}>Minus</button>
             <input type="number" name="numberOfGuests" id="numberOfGuests"></input>
             <button onClick={() => {console.log("Plus clicked!")}}>Plus</button>
+            <h4>Pick a Date</h4>
             <Calendar prev2Label={null} next2Label={null} minDetail="year" onChange={onChange} value={date}></Calendar>
             {console.log(date)}
             <Button content="Continue" />
-            <h4>Please select a time</h4>
+            <h4>Available times</h4>
             <Button content="18:00" />
             <Button content="21:00" />
         </div>
