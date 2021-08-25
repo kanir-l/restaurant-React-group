@@ -7,6 +7,7 @@ import Start from './pages/Start';
 import Reservations from './pages/Reservations';
 import Contact from './pages/Contact';
 import Admin from './pages/Admin';
+import Confirmations from './pages/Confirmations';
 
 function App() {
   return (
@@ -24,6 +25,12 @@ function App() {
         <Switch>
           <Route path='/reservations' exact>
             <Reservations></Reservations>
+          </Route>
+        </Switch>
+
+        <Switch>
+          <Route path='/confirmations' exact>
+            <Confirmations></Confirmations>
           </Route>
         </Switch>
 
