@@ -3,7 +3,7 @@ import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import Button from '../components/Button';
 import InputGuests from '../components/InputGuests';
-import TimeSlots from './TimeSlots';
+import TimeSlots from '../components/TimeSlots';
 
 function Reservations() {
     const [date, setDate] = useState(new Date());
