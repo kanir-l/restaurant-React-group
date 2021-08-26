@@ -3,7 +3,7 @@
   height: 100vh;
 }
 
-.start-container, .reservations-container, .contact-container, .admin-container {
+.start-container, .reservations-container, .contact-container, .admin-container, .confirmation-container {
   min-height: 45vh;
 }
 
