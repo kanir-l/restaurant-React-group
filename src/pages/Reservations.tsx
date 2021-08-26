@@ -11,9 +11,9 @@ function Reservations() {
         <div className="reservations-container">
             <h2>Reservations</h2>
             <label htmlFor="numberOfGuests">Number of Guests</label>
-            <button onClick={() => {console.log("Minus clicked!")}}>Minus</button>
+            {/* <button onClick={() => {console.log("Minus clicked!")}}>Minus</button>
             <input type="number" name="numberOfGuests" id="numberOfGuests"></input>
-            <button onClick={() => {console.log("Plus clicked!")}}>Plus</button>
+            <button onClick={() => {console.log("Plus clicked!")}}>Plus</button> */}
             <h4>Pick a Date</h4>
             <Calendar prev2Label={null} next2Label={null} minDetail="year" onChange={setDate} value={date}></Calendar>
             {console.log(date)}
