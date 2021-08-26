@@ -48,3 +48,28 @@ nav {
   margin: 10px;
 }
 
+.admin-container {
+  display: flex;
+  justify-content: center;
+}
+
+.booking-container {
+  width: 90%;
+  margin: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.edit-delete {
+  width: 75px;
+  margin: 24px;
+}
+
+b, p {
+  display: inline;
+}
+
+
+
+

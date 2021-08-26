@@ -5,17 +5,45 @@ import { BookingModel } from '../models/BookingModel'
 function Admin() {
     const [bookings, setBookings] = useState<BookingModel[]>([])
    
-    const printDatas = bookings.map(booking => {
+    const printAllBookings = bookings.map(booking => {
         return(
-            <React.Fragment key={booking.id}>
-                <p>ID: {booking.id}</p>
-                <p>GUEST: {booking.numberOfGuests}</p>  
-                <p>DATE: {booking.date}</p>
-                <p>TIME: {booking.time}</p>
-                <p>FIRSTNAME: {booking.firstName}</p>
-                <p>LASTNAME: {booking.lastName}</p>
-                <p>PHONE: {booking.phone}</p>
-                <p>EMAIL: {booking.email}</p>
+            <React.Fragment key={booking.id} >
+                <div className = "booking-container">
+                    <div>
+                        <b>ID:</b> 
+                        <p>{booking.id}</p>
+                            <br></br>
+                        <b>NO.OF GUESTS:</b> 
+                        <p>{booking.numberOfGuests}</p> 
+                            <br></br> 
+                        <b>BOOKING Date:</b> 
+                        <p>{booking.date}</p>
+                            <br></br>
+                        <b>BOOKING TIME:</b> 
+                        <p>{booking.time}</p>
+                            <br></br>
+                        <b>FIRSTNAME:</b> 
+                        <p>{booking.firstName}</p>
+                            <br></br>
+                        <b>LASTNAME:</b> 
+                        <p>{booking.lastName}</p>
+                            <br></br>
+                        <b>PHONE NO:</b> 
+                        <p>{booking.phone}</p>
+                            <br></br>
+                        <b>EMAIL:</b> 
+                        <p>{booking.email}</p>
+                            <br></br>
+                        <b>SPEICAL REQUEST:</b> 
+                        <p>{booking.specialRequest}</p>
+                            <br></br>
+                    </div>
+                    <div className="edit-delete">
+                        <button>Edit</button>
+                        <button>Delete</button>
+                    </div>
+                </div>
+                
             </React.Fragment>
         )
     })
@@ -33,7 +61,7 @@ function Admin() {
     
     return (
         <div className="admin-container">
-            <div>{printDatas}</div>
+            <div>{printAllBookings}</div>
         </div>
     )
 }
