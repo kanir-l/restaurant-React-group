@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import Button from '../components/Button';
+import ContactDetails from '../components/ContactDetails';
 import InputGuests from '../components/InputGuests';
 import TimeSlots from '../components/TimeSlots';
 
@@ -20,8 +21,8 @@ function Reservations() {
             <Calendar prev2Label={null} next2Label={null} minDetail="year" onChange={setDate} value={date}></Calendar>
             {console.log(date)}
             <Button content="Continue" />
-
             <TimeSlots />
+            <ContactDetails />
         </div>
     )
 }
