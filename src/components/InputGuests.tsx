@@ -28,8 +28,6 @@ function InputGuests() {
                 min="1"
                 max="90"
                 />
-            {/* <input type="number" name="numberOfGuests" id="numberOfGuests" value={inputValue}></input> */}
-            {/* <div>{inputValue}</div> */}
             <button onClick={increment}>Increment</button>
         </div>
     );
