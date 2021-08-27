@@ -7,11 +7,12 @@ function Admin() {
    
     const printAllBookings = bookings.map(booking => {
         return(
-            <React.Fragment key={booking.id} >
-                <div className = "booking-container">
-                    <div>
+            <React.Fragment>
+            <div className="booking-container "key={booking._id} >
+                <div className = "booking-box">
+                    <div className = "booking">
                         <b>ID:</b> 
-                        <p>{booking.id}</p>
+                        <p>{booking._id}</p>
                             <br></br>
                         <b>NO.OF GUESTS:</b> 
                         <p>{booking.numberOfGuests}</p> 
@@ -43,7 +44,7 @@ function Admin() {
                         <button>Delete</button>
                     </div>
                 </div>
-                
+            </div>  
             </React.Fragment>
         )
     })
@@ -61,7 +62,8 @@ function Admin() {
     
     return (
         <div className="admin-container">
-            <div>{printAllBookings}</div>
+            <b className="b-bookings">All Bookings</b>
+            {printAllBookings}
         </div>
     )
 }

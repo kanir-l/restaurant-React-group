@@ -4,6 +4,7 @@
 }
 
 .start-container, .reservations-container, .contact-container, .admin-container, .confirmation-container {
+  width: 100%;
   min-height: 45vh;
 }
 
@@ -48,26 +49,35 @@ nav {
   margin: 10px;
 }
 
+/* Admin */
 .admin-container {
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 .booking-container {
   width: 90%;
-  margin: 36px;
+}
+
+.booking-box {
+  margin-top: 24px;
   display: flex;
-  justify-content: center;
   align-items: center;
+}
+
+.booking {
+  width: 600px;
 }
 
 .edit-delete {
   width: 75px;
-  margin: 24px;
 }
 
 b, p {
   display: inline;
+  width: 90%;
 }
 
 
