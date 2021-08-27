@@ -13,6 +13,7 @@ function InputGuests() {
 
     return (
         <div>
+            <label htmlFor="numberOfGuests">Number of Guests</label>
             <button disabled={false} onClick={decrement}>Decrement</button>
             <input type="number" name="numberOfGuests" id="numberOfGuests" value={inputValue}></input>
             {/* <div>{inputValue}</div> */}

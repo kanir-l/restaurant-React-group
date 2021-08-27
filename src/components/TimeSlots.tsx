@@ -1,6 +1,10 @@
+
 import Button from "./Button";
 
+
 function TimeSlots() {
+
+
     return (
         <div>
             <h4>Available times</h4>
