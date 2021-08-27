@@ -1,10 +1,24 @@
 import React, { useEffect, useState } from 'react'
-//import Axios from 'axios'
+import axios from 'axios'
 import { BookingModel } from '../models/BookingModel'
 
 function Admin() {
     const [bookings, setBookings] = useState<BookingModel[]>([])
-   
+
+    // * Fetch the bookings from the DB with /admin * //
+    useEffect(() => {
+        try {
+            axios.get('/admin')
+            .then(res => {
+            const allBookingsFromDB = res.data;
+            setBookings(allBookingsFromDB);
+            })
+        } catch(error) {
+            console.log(error)
+        }
+    }, [])
+
+    // * All bookings HTML form *//
     const printAllBookings = bookings.map(booking => {
         return(
             <React.Fragment>
@@ -48,21 +62,10 @@ function Admin() {
             </React.Fragment>
         )
     })
-
-    useEffect(() => {
-        fetch('/admin')
-        .then(res => {
-            return res.json()
-        })
-        .then(data => {
-            setBookings(data)
-            console.log(data)
-        })
-    }, [])
-    
+  
     return (
         <div className="admin-container">
-            <b className="b-bookings">All Bookings</b>
+            <b>All Bookings</b>
             {printAllBookings}
         </div>
     )
