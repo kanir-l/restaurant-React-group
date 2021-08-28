@@ -1,7 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, ChangeEvent } from "react";
+
+
+interface IContacts {
+    firstName: string;
+    lastName: string;
+    phone: string;
+    email: string;
+    message: string;
+}
 
 function ContactDetails() {
-    const [values, setValues] = useState({
+    const [contacts, setContacts] = useState<IContacts>({
         firstName: "",
         lastName: "",
         phone: "",
@@ -12,66 +21,62 @@ function ContactDetails() {
     const [submitted, setSubmitted] = useState(false);
     const [valid, setValid] = useState(false);
 
-    const handleFirstNameInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setValues({...values, firstName: event.target.value});
-    };
+    const handleInputs = (e: ChangeEvent<HTMLInputElement>) => {
+        let name = e.target.name;
+        setContacts({...contacts, [name]: e.target.value});
+    }
 
-    const handleLastNameInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setValues({...values, lastName: event.target.value});
-    };
-
-    const handlePhoneInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setValues({...values, phone: event.target.value});
-    };
-
-    const handleEmailInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setValues({...values, email: event.target.value});
-    };
-
-    const handleMessageInputChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-        setValues({...values, message: event.target.value});
-    };
-
-    const handleSubmit = (event: React.FormEvent) => {
-        event.preventDefault();
-        if(values.firstName && values.lastName && values.phone && values.email) {
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+        if(contacts.firstName && contacts.lastName && contacts.phone && contacts.email) {
             setValid(true);
         }
         setSubmitted(true);
     }
 
+    const sendData = () => {
+        // something with props here
+        console.log("Sending data: ", contacts)
+    }
+
     return (
         <form onSubmit={handleSubmit}>
-            {submitted && !values.firstName ? <span>Please enter a first name.</span> : null}
+            {submitted && !contacts.firstName ? <span>Please enter a first name.</span> : null}
             <input 
                 type="text" 
-                value={values.firstName} 
-                onChange={handleFirstNameInputChange}
+                value={contacts.firstName} 
+                onChange={handleInputs}
+                name="firstName"
                 placeholder="First Name" />
-            {submitted && !values.lastName ? <span>Please enter a last name.</span> : null}
+            {submitted && !contacts.lastName ? <span>Please enter a last name.</span> : null}
             <input 
                 type="text" 
-                value={values.lastName}
-                onChange={handleLastNameInputChange}
+                value={contacts.lastName}
+                onChange={handleInputs}
+                name="lastName"
                 placeholder="Last Name" />
-            {submitted && !values.phone ? <span>Please enter a phone number</span> : null}
+            {submitted && !contacts.phone ? <span>Please enter a phone number</span> : null}
             <input 
                 type="text" 
-                value={values.phone}
-                onChange={handlePhoneInputChange}
+                value={contacts.phone}
+                onChange={handleInputs}
+                name="phone"
                 placeholder="Phone number" />
-            {submitted && !values.email ? <span>Please enter an email address.</span> : null}
+            {submitted && !contacts.email ? <span>Please enter an email address.</span> : null}
             <input 
                 type="email" 
-                value={values.email}
-                onChange={handleEmailInputChange}
+                value={contacts.email}
+                onChange={handleInputs}
+                name="email"
                 placeholder="Email address" />
-            <textarea 
-                value={values.message} 
-                onChange={handleMessageInputChange}
+            <input
+                type="text" 
+                value={contacts.message} 
+                onChange={handleInputs}
+                name="message"
                 placeholder="Message..." />
             {submitted && valid ? <div >Your reservation have been sent!</div> : null}
-            <button type="submit">Confirm Reservation</button>
+            <button type="submit" onClick={sendData}>Confirm reservation</button>
         </form>
     );
 }
