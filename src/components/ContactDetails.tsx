@@ -35,6 +35,7 @@ function ContactDetails() {
     }
 
     const sendData = () => {
+        // something with props here
         console.log("Sending data: ", contacts)
     }
 

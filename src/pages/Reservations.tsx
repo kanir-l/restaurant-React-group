@@ -1,9 +1,11 @@
+
 import 'react-calendar/dist/Calendar.css';
 import Button from '../components/Button';
 import ContactDetails from '../components/ContactDetails';
 import InputDate from '../components/InputDate';
 import InputGuests from '../components/InputGuests';
 import TimeSlots from '../components/TimeSlots';
+
 
 function Reservations() {
 
