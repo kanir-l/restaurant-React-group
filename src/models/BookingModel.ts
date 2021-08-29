@@ -7,7 +7,7 @@ export class BookingModel {
         public time: number,
         public firstName: string,
         public lastName: string,
-        public phone: number,
+        public phone: string,
         public email: string,
         public specialRequest: string
     ) {}
