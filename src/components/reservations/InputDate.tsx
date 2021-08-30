@@ -9,18 +9,19 @@ interface IInputDateProps {
 function InputDate(props: IInputDateProps) {
     const [date, setDate] = useState(new Date()); 
 
-    const saveDate = () => {
-        setDate(date); /////
-        //Anropa Reservations page och ge den det valda datumet
-        props.inputDate(date);
+    const saveDate = (dateValue: Date) => {
+        setDate(prevDate => {
+            const newDate = dateValue;
+            props.inputDate(newDate)
+            return newDate;
+        })
+   
     }
     
     return (
         <div>
             <h4>Pick a Date</h4>
             <Calendar prev2Label={null} next2Label={null} minDetail="year" onChange={saveDate} value={date}></Calendar>
-            
-
         </div>
     )
 }

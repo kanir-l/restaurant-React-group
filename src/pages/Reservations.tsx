@@ -7,7 +7,6 @@ import { BookingModel } from '../models/BookingModel';
 import { useState } from 'react';
 
 function Reservations() {
-
     const [reservation, setReservation] = useState<BookingModel>({
             _id: 0,
             id: 0,
@@ -21,36 +20,31 @@ function Reservations() {
             specialRequest: ""
     });
 
-    const addGuests = (inputValue: number) => {
-        let res = new BookingModel(0, 0, inputValue, new Date(), 0, "", "", "", "", "")
+    const addGuests = (guestsInput: number) => {
+        let res = new BookingModel(0, 0, guestsInput, reservation.date, 0, "", "", "", "", "")
         setReservation(res);
-        
-        console.log(reservation);
     }
     
-    const addDate = (date: Date) => {
-        let res = new BookingModel(0, 0, 0, date, 0, "", "", "", "", "")
+    const addDate = (dateInput: Date) => {
+        let res = new BookingModel(0, 0, reservation.numberOfGuests, dateInput, 0, "", "", "", "", "")
         setReservation(res);
-        
-        console.log(reservation);
     }
 
     const addTime = (time: number) => {
-        let res = new BookingModel(0, 0, 0, new Date(), time, "", "", "", "", "")
+        let res = new BookingModel(0, 0, reservation.numberOfGuests, reservation.date, time, "", "", "", "", "")
         setReservation(res);
-        console.log(reservation);
     }
 
-    const addContacts = (firstName: string, 
+    const addContacts = (
+        firstName: string, 
         lastName: string, 
         phone: string, 
         email: string, 
         specialRequest: string) => {
         
-         let res = new BookingModel(0, 0, 0, new Date(), 0, firstName, lastName, phone, email, specialRequest);
+         let res = new BookingModel(0, 0, reservation.numberOfGuests, reservation.date, 0, firstName, lastName, phone, email, specialRequest);
          setReservation(res);
          console.log(reservation);   
-
     }
 
     // const addReservation = (
