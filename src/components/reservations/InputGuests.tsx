@@ -15,22 +15,36 @@ function InputGuests(props: IInputGuestsProps) {
     const decrement = () => {
         setInputValue(prevInputValue => prevInputValue - 1);
     }
+
+    
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setInputValue(parseInt(e.target.value));
+    }
+
     //////////////
 
-    const [numberOfGuests, setNumberOfGuests] = useState(0);
+    // const [numberOfGuests, setNumberOfGuests] = useState(0);
 
-    const saveGuests = () => {
-        setNumberOfGuests(numberOfGuests);
+    // const saveGuests = () => {
+    //     setNumberOfGuests(numberOfGuests);
         
-        props.inputGuests(numberOfGuests);
-    }
+    //     props.inputGuests(numberOfGuests);
+    // }
+
+    
 
     return (
         <div>
-            <label htmlFor="numberOfGuests">Number of Guests</label>
-            <button disabled={false} onClick={decrement}>Decrement</button>
-            <input type="number" name="numberOfGuests" id="numberOfGuests" value={inputValue} onChange={saveGuests}></input>
-            {/* <div>{inputValue}</div> */}
+            {(inputValue === 1) ? <button disabled={true} onClick={decrement}>Decrement</button> : <button disabled={false} onClick={decrement}>Decrement</button>}
+            <input 
+                type="number"
+                value={inputValue.toString()}
+                onChange={handleChange}
+                name="numberOfGuests" 
+                id="numberOfGuests"
+                min="1"
+                max="90"
+                />
             <button onClick={increment}>Increment</button>
         </div>
     );
