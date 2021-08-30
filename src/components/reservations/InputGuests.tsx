@@ -19,9 +19,10 @@ function InputGuests(props: IInputGuestsProps) {
     
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setInputValue(parseInt(e.target.value));
+        props.inputGuests(inputValue);
     }
 
-    //////////////
+    ////////////
 
     // const [numberOfGuests, setNumberOfGuests] = useState(0);
 

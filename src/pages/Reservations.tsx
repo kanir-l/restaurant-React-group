@@ -21,8 +21,8 @@ function Reservations() {
             specialRequest: ""
     });
 
-    const addGuests = (numberOfGuests: number) => {
-        let res = new BookingModel(0, 0, numberOfGuests, new Date(), 0, "", "", "", "", "")
+    const addGuests = (inputValue: number) => {
+        let res = new BookingModel(0, 0, inputValue, new Date(), 0, "", "", "", "", "")
         setReservation(res);
         
         console.log(reservation);

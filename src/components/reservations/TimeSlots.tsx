@@ -1,18 +1,26 @@
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 
 interface ITimeSlotsProps {
     timeSlots(time: number): void;
 }
 
+interface ITimeSlot {
+    time: number;
+}
 
 function TimeSlots(props: ITimeSlotsProps) {
 
-    const [time, setTime] = useState(0);
+    const [time, setTime] = useState<ITimeSlot>({
+        time: 0
+    });
 
-    const saveTime = () => {
-        setTime(time);
-        
-        props.timeSlots(time);
+    const saveTime = (e: ChangeEvent<HTMLInputElement>) => {
+        let timeSlotValue = e.target.value;
+        let parsedTimeSlotValue = parseInt(timeSlotValue);
+        console.log(parsedTimeSlotValue);
+        setTime({...time, time: parsedTimeSlotValue});
+
+        props.timeSlots(time.time);
     }
 
     return (
@@ -23,7 +31,7 @@ function TimeSlots(props: ITimeSlotsProps) {
             <input type="radio" id="time1" name="time" value="18.00" onChange={saveTime}></input>
             <label htmlFor="time1">18:00</label>
 
-            <input type="radio" id="age2" name="time" value="21.00" onChange={saveTime}></input>
+            <input type="radio" id="time2" name="time" value="21.00" onChange={saveTime}></input>
             <label htmlFor="time2">21:00</label>
 
             </form>
