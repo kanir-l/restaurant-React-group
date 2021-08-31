@@ -1,10 +1,10 @@
-import Button from '../components/Button';
 import ContactDetails from '../components/reservations/ContactDetails';
 import InputDate from '../components/reservations/InputDate';
 import InputGuests from '../components/reservations/InputGuests';
 import TimeSlots from '../components/reservations/TimeSlots';
 import { BookingModel } from '../models/BookingModel';
 import { useState } from 'react';
+import axios from 'axios';
 
 function Reservations() {
     const [reservation, setReservation] = useState<BookingModel>({
@@ -62,13 +62,42 @@ function Reservations() {
     //     console.log(reservation);
     // }
 
+    function sendingGuestsAndDate() {
+        const eightteenUrl = "http://localhost:8080/reservations/checkingEightteen"
+        const twentyoneUrl = "http://localhost:8080/reservations/checkingTwentyone"
+        // 18:00
+        axios.post(eightteenUrl, {
+            requestedNoOfGuests: reservation.numberOfGuests,
+            requestedDate: reservation.date
+        })
+        .then(response => {
+            console.log(response)
+        })
+        .catch(error => {
+            console.log(error)
+        })
+        console.log("run")
+
+        // 21:00
+        axios.post(twentyoneUrl, {
+            requestedNoOfGuests: reservation.numberOfGuests,
+            requestedDate: reservation.date
+        })
+        .then(response => {
+            console.log(response)
+        })
+        .catch(error => {
+            console.log(error)
+        })
+        console.log("run")
+    }
 
     return (
         <div className="reservations-container">
             <h2>Reservations</h2>
             <InputGuests inputGuests={addGuests}></InputGuests>
             <InputDate inputDate={addDate}></InputDate>
-            <Button content="Continue"></Button>
+            <button onClick={sendingGuestsAndDate}>Continue</button>
             <TimeSlots timeSlots={addTime}></TimeSlots>
             <ContactDetails contactDetails={addContacts}></ContactDetails>
         </div>

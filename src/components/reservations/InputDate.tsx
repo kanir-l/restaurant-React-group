@@ -15,7 +15,6 @@ function InputDate(props: IInputDateProps) {
             props.inputDate(newDate)
             return newDate;
         })
-   
     }
     
     return (

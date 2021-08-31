@@ -30,7 +30,11 @@ function ContactDetails(props: IContactDetailsProps) {
     const handleInputs = (e: ChangeEvent<HTMLInputElement>) => {
         let name = e.target.name;
         setContacts({...contacts, [name]: e.target.value});
-        
+
+        setContacts(prevContacts => {
+            const newContacts =  {...contacts, prevContacts, [name]: e.target.value};
+            return newContacts;
+        })
     }
 
     const saveContacts = () => {
