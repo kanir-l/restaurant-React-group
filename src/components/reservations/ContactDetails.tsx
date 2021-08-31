@@ -30,17 +30,12 @@ function ContactDetails(props: IContactDetailsProps) {
     const handleInputs = (e: ChangeEvent<HTMLInputElement>) => {
         let name = e.target.name;
         setContacts({...contacts, [name]: e.target.value});
-
-        setContacts(prevContacts => {
-            const newContacts =  {...contacts, prevContacts, [name]: e.target.value};
-            return newContacts;
-        })
+        props.contactDetails(contacts.firstName, contacts.lastName, contacts.phone, contacts.email, contacts.specialRequest);
     }
 
     const saveContacts = () => {
         //Anropa Reservations page och ge den det valda datumet
-        props.contactDetails(contacts.firstName, contacts.lastName, contacts.phone, contacts.email, contacts.specialRequest);
-        
+        props.contactDetails(contacts.firstName, contacts.lastName, contacts.phone, contacts.email, contacts.specialRequest);  
     }
 
         ////////// Lovisas validation ///////////
