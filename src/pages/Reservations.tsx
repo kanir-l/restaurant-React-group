@@ -21,17 +21,17 @@ function Reservations() {
     });
 
     const addGuests = (guestsInput: number) => {
-        let res = new BookingModel(0, 0, guestsInput, reservation.date, 0, "", "", "", "", "")
+        let res = new BookingModel(reservation._id, reservation.id, guestsInput, reservation.date, reservation.time, reservation.firstName, reservation.lastName, reservation.phone, reservation.email, reservation.specialRequest);
         setReservation(res);
     }
     
     const addDate = (dateInput: Date) => {
-        let res = new BookingModel(0, 0, reservation.numberOfGuests, dateInput, 0, "", "", "", "", "")
+        let res = new BookingModel(reservation._id, reservation.id, reservation.numberOfGuests, dateInput, reservation.time, reservation.firstName, reservation.lastName, reservation.phone, reservation.email, reservation.specialRequest);
         setReservation(res);
     }
 
     const addTime = (time: number) => {
-        let res = new BookingModel(0, 0, reservation.numberOfGuests, reservation.date, time, "", "", "", "", "")
+        let res = new BookingModel(reservation._id, reservation.id, reservation.numberOfGuests, reservation.date, time, reservation.firstName, reservation.lastName, reservation.phone, reservation.email, reservation.specialRequest);
         setReservation(res);
     }
 
@@ -42,7 +42,7 @@ function Reservations() {
         email: string, 
         specialRequest: string) => {
         
-         let res = new BookingModel(0, 0, reservation.numberOfGuests, reservation.date, 0, firstName, lastName, phone, email, specialRequest);
+         let res = new BookingModel(reservation._id, reservation.id, reservation.numberOfGuests, reservation.date, reservation.time, firstName, lastName, phone, email, specialRequest);
          setReservation(res);
          console.log(reservation);   
     }
