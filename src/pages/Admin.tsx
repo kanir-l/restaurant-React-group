@@ -7,22 +7,21 @@ function Admin() {
 
     // * Fetch the bookings from the DB with /admin * //
     useEffect(() => {
-        try {
             axios.get('/admin')
             .then(res => {
-            const allBookingsFromDB = res.data;
-            setBookings(allBookingsFromDB);
+                const allBookingsFromDB = res.data;
+                setBookings(allBookingsFromDB);
             })
-        } catch(error) {
-            console.log(error)
-        }
+            .catch (error => {
+                console.log(error)
+            })
     }, [])
 
     // * All bookings HTML form *//
     const printAllBookings = bookings.map(booking => {
         return(
-            <React.Fragment>
-            <div className="booking-container "key={booking._id} >
+            <React.Fragment key={booking._id}>
+            <div className="booking-container">
                 <div className = "booking-box">
                     <div className = "booking">
                         <b>ID:</b> 
