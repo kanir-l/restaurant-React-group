@@ -6,10 +6,7 @@ import { BookingModel } from '../models/BookingModel';
 import { useState } from 'react';
 import axios from 'axios';
 
-// interface ISlotProps {
-//     sendingTimeSlots(slot: boolean): void;
-  
-// }
+
 
 function Reservations() {
     const [reservation, setReservation] = useState<BookingModel>({
@@ -53,22 +50,8 @@ function Reservations() {
          console.log(reservation);   
     }
 
-    // const addReservation = (
-    //     numberOfGuests: number, 
-    //     date: Date, 
-    //     time: number, 
-    //     firstName: string, 
-    //     lastName: string, 
-    //     phone: string, 
-    //     email: string, 
-    //     specialRequest: string) => {
 
-    //     let res = new BookingModel(0, 0, numberOfGuests, date, time, firstName, lastName, phone, email, specialRequest)
-    //     setReservation(res);
-    //     console.log(reservation);
-    // }
-
-    function sendingGuestsAndDate(props: ISlotProps) {
+    function sendingGuestsAndDate() {
         
         const eightteenUrl = "/reservations/checkingEightteen"
         const twentyoneUrl = "/reservations/checkingTwentyone"
@@ -80,8 +63,9 @@ function Reservations() {
             requestedDate: reservation.date
         })
         .then(response => {
-            console.log(response)
-            props.sendingTimeSlots(response.data)
+            console.log(response);
+            setSlot1(response.data);
+            
         })
         .catch(error => {
             console.log(error)
@@ -93,13 +77,17 @@ function Reservations() {
             requestedDate: reservation.date
         })
         .then(response => {
-            console.log(response)
-            props.sendingTimeSlots(response.data)
+            console.log(response);
+            setSlot2(response.data);
+           
         })
         .catch(error => {
             console.log(error)
         })  
     }
+
+    const [slot1, setSlot1] = useState(false);
+    const [slot2, setSlot2] = useState(false);
 
     return (
         <div className="reservations-container">
@@ -107,7 +95,7 @@ function Reservations() {
             <InputGuests inputGuests={addGuests}></InputGuests>
             <InputDate inputDate={addDate}></InputDate>
             <button onClick={sendingGuestsAndDate}>Continue</button>
-            <TimeSlots timeSlots={addTime}></TimeSlots>
+            <TimeSlots timeSlots={addTime} slot1Bookable={slot1} slot2Bookable={slot2}></TimeSlots>
             <ContactDetails contactDetails={addContacts}></ContactDetails>
         </div>
     )

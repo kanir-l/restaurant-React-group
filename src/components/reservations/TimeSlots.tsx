@@ -2,12 +2,14 @@ import { ChangeEvent, useState } from "react";
 
 interface ITimeSlotsProps {
     timeSlots(time: number): void;
+    slot1Bookable: boolean;
+    slot2Bookable: boolean;
 }
 
 function TimeSlots(props: ITimeSlotsProps) {
 
-    const slot1Available = props.slot1Available;
-    const slot2Available = props.slot2Available;
+    const slot1Available = props.slot1Bookable;
+    const slot2Available = props.slot2Bookable;
 
     const renderSlot1 = () => {
         if (slot1Available) {
