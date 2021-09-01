@@ -11,7 +11,7 @@ function Reservations() {
             _id: 0,
             id: 0,
             numberOfGuests: 0,
-            date: new Date(),
+            date: "",
             time: 0,
             firstName: "",
             lastName: "",
@@ -26,7 +26,8 @@ function Reservations() {
     }
     
     const addDate = (dateInput: Date) => {
-        let res = new BookingModel(reservation._id, reservation.id, reservation.numberOfGuests, dateInput, reservation.time, reservation.firstName, reservation.lastName, reservation.phone, reservation.email, reservation.specialRequest);
+        const dateInputToString = dateInput.toString().substring(0, 16)
+        let res = new BookingModel(reservation._id, reservation.id, reservation.numberOfGuests, dateInputToString, reservation.time, reservation.firstName, reservation.lastName, reservation.phone, reservation.email, reservation.specialRequest);
         setReservation(res);
     }
 
@@ -65,6 +66,7 @@ function Reservations() {
     function sendingGuestsAndDate() {
         const eightteenUrl = "http://localhost:8080/reservations/checkingEightteen"
         const twentyoneUrl = "http://localhost:8080/reservations/checkingTwentyone"
+        
         // 18:00
         axios.post(eightteenUrl, {
             requestedNoOfGuests: reservation.numberOfGuests,
@@ -76,7 +78,6 @@ function Reservations() {
         .catch(error => {
             console.log(error)
         })
-        console.log("run")
 
         // 21:00
         axios.post(twentyoneUrl, {
@@ -88,8 +89,7 @@ function Reservations() {
         })
         .catch(error => {
             console.log(error)
-        })
-        console.log("run")
+        })  
     }
 
     return (
