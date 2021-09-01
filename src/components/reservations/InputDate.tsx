@@ -7,7 +7,7 @@ interface IInputDateProps {
 }
 
 function InputDate(props: IInputDateProps) {
-    const [date, setDate] = useState(new Date()); 
+    const [date, setDate] = useState(new Date());  
 
     const saveDate = (dateValue: Date) => {
         setDate(prevDate => {
@@ -20,7 +20,7 @@ function InputDate(props: IInputDateProps) {
     return (
         <div>
             <h4>Pick a Date</h4>
-            <Calendar prev2Label={null} next2Label={null} minDetail="year" onChange={saveDate} value={date}></Calendar>
+            <Calendar prev2Label={null} next2Label={null} minDetail="year"  onChange={saveDate} value={date}></Calendar>
         </div>
     )
 }

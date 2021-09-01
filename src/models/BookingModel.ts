@@ -3,7 +3,7 @@ export class BookingModel {
         public _id: number,
         public id: number,
         public numberOfGuests: number,
-        public date: Date,
+        public date: string,
         public time: number,
         public firstName: string,
         public lastName: string,
