@@ -6,6 +6,11 @@ import { BookingModel } from '../models/BookingModel';
 import { useState } from 'react';
 import axios from 'axios';
 
+// interface ISlotProps {
+//     sendingTimeSlots(slot: boolean): void;
+  
+// }
+
 function Reservations() {
     const [reservation, setReservation] = useState<BookingModel>({
             _id: 0,
@@ -63,9 +68,11 @@ function Reservations() {
     //     console.log(reservation);
     // }
 
-    function sendingGuestsAndDate() {
-        const eightteenUrl = "http://localhost:8080/reservations/checkingEightteen"
-        const twentyoneUrl = "http://localhost:8080/reservations/checkingTwentyone"
+    function sendingGuestsAndDate(props: ISlotProps) {
+        
+        const eightteenUrl = "/reservations/checkingEightteen"
+        const twentyoneUrl = "/reservations/checkingTwentyone"
+        
         
         // 18:00
         axios.post(eightteenUrl, {
@@ -74,6 +81,7 @@ function Reservations() {
         })
         .then(response => {
             console.log(response)
+            props.sendingTimeSlots(response.data)
         })
         .catch(error => {
             console.log(error)
@@ -86,6 +94,7 @@ function Reservations() {
         })
         .then(response => {
             console.log(response)
+            props.sendingTimeSlots(response.data)
         })
         .catch(error => {
             console.log(error)
