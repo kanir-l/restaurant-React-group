@@ -11,6 +11,20 @@ function TimeSlots(props: ITimeSlotsProps) {
     const slot1Available = props.slot1Bookable;
     const slot2Available = props.slot2Bookable;
 
+    const renderSorryMessage = () => {
+        if (!slot1Available && !slot2Available) {
+            return (
+                <div className = "sorry-box">
+                <h3>We’re sorry!</h3>
+                <p>We don’t have any tables available on that date.</p>
+                <p>Please choose another date.</p>
+                </div>
+            )
+        } else {
+          return (<h4>The following times are available. Please select a time</h4>)
+        }
+    }
+
     const renderSlot1 = () => {
         if (slot1Available) {
           return ( <>
@@ -32,18 +46,6 @@ function TimeSlots(props: ITimeSlotsProps) {
           return null;
         }
       }
-    
-    const renderSorryMessage = () => {
-        if (!slot1Available && !slot2Available) {
-            return (
-                <div className = "sorry-box">
-                <h3>We’re sorry!</h3>
-                <p>We don’t have any tables available on that date.</p>
-                <p>Please choose another date.</p>
-                </div>
-            )
-        }
-    }
 
 
     const [time, setTime] = useState(0);
@@ -57,12 +59,12 @@ function TimeSlots(props: ITimeSlotsProps) {
     return (
         <div>
             <form>
-            <h4>Available times</h4>
+            {renderSorryMessage()}
             {renderSlot1()}
             {renderSlot2()}
             </form>
             <p style={{visibility: "hidden"}}>{time}</p>
-            {renderSorryMessage()}
+           
         </div>
     );
 }

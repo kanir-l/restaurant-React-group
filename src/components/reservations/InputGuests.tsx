@@ -5,7 +5,7 @@ interface IInputGuestsProps {
 }
 
 function InputGuests(props: IInputGuestsProps) {
-    const [guests, setGuests] = useState(0);
+    const [guests, setGuests] = useState(1);
 
     // If [guests] state is changed, run the props in the useEffect
     useEffect(() => {
@@ -34,7 +34,8 @@ function InputGuests(props: IInputGuestsProps) {
 
     return (
         <div>
-            {(guests === 0) ? <button disabled={true} onClick={decrement}> - </button> : <button onClick={decrement} disabled={false}> - </button>}
+            <h4>Number of guests</h4>
+            {(guests === 1) ? <button disabled={true} onClick={decrement}> - </button> : <button onClick={decrement} disabled={false}> - </button>}
             <input 
                 type="number"
                 value={guests.toString()}
