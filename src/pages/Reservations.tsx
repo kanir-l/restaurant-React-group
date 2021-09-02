@@ -50,7 +50,6 @@ function Reservations() {
 
         // Backend
         const comfirmationBookingUrl = "/reservations/confirmation"
-
         axios.post(comfirmationBookingUrl, {
             newBooking: res
         })

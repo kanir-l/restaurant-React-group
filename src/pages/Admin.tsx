@@ -7,15 +7,27 @@ function Admin() {
 
     // * Fetch the bookings from the DB with /admin * //
     useEffect(() => {
-            axios.get('/admin')
-            .then(res => {
-                const allBookingsFromDB = res.data;
-                setBookings(allBookingsFromDB);
-            })
-            .catch (error => {
-                console.log(error)
-            })
+        axios.get('/admin')
+        .then(res => {
+            const allBookingsFromDB = res.data;
+            setBookings(allBookingsFromDB);
+        })
+        .catch (error => {
+            console.log(error)
+        })
     }, [])
+
+    const deleteBooking = (bookingId: number) => {
+        const adminDeleteUrl = ("/admin/delete/" + bookingId)
+ 
+        axios.delete(adminDeleteUrl)
+        .then(response => {
+            console.log(response);
+        })
+        .catch(error => {
+            console.log(error)
+        })
+    }
 
     // * All bookings HTML form *//
     const printAllBookings = bookings.map(booking => {
@@ -54,7 +66,7 @@ function Admin() {
                     </div>
                     <div className="edit-delete">
                         <button>Edit</button>
-                        <button>Delete</button>
+                        <button onClick={() => deleteBooking(booking._id)}>Delete</button>
                     </div>
                 </div>
             </div>  
