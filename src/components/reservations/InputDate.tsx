@@ -19,7 +19,7 @@ function InputDate(props: IInputDateProps) {
     
     return (
         <div>
-            <h4>Pick a Date</h4>
+            <h4>Date</h4>
             <Calendar prev2Label={null} next2Label={null} minDetail="year"  onChange={saveDate} value={date}></Calendar>
         </div>
     )

@@ -37,7 +37,7 @@ function ContactDetails(props: IContactDetailsProps) {
         props.contactDetails(contacts.firstName, contacts.lastName, contacts.phone, contacts.email, contacts.specialRequest);  
     }
 
-        ////////// Lovisas validation ///////////
+        ////////Validation
         const [submitted, setSubmitted] = useState(false);
         const [valid, setValid] = useState(false);
     
@@ -50,6 +50,8 @@ function ContactDetails(props: IContactDetailsProps) {
         }
 
     return (
+        <>
+        <h4>Your contact details</h4>
         <form onSubmit={handleSubmit}>
             {submitted && !contacts.firstName ? <span>Please enter a first name.</span> : null}
             <input 
@@ -88,6 +90,7 @@ function ContactDetails(props: IContactDetailsProps) {
             {submitted && valid ? <div >Your reservation have been sent!</div> : null}
             <Link to='/reservations/confirmation'><button type="submit" onClick={saveContacts}>Confirm reservation</button></Link>
         </form>
+        </>
     );
 }
 
