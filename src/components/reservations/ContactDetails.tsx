@@ -1,4 +1,5 @@
 import React, { useState, ChangeEvent } from "react";
+import { Link } from "react-router-dom";
 
 interface IContactDetailsProps {
     contactDetails(
@@ -30,11 +31,9 @@ function ContactDetails(props: IContactDetailsProps) {
     const handleInputs = (e: ChangeEvent<HTMLInputElement>) => {
         let name = e.target.name;
         setContacts({...contacts, [name]: e.target.value});
-        props.contactDetails(contacts.firstName, contacts.lastName, contacts.phone, contacts.email, contacts.specialRequest);
     }
 
     const saveContacts = () => {
-        //Anropa Reservations page och ge den det valda datumet
         props.contactDetails(contacts.firstName, contacts.lastName, contacts.phone, contacts.email, contacts.specialRequest);  
     }
 
@@ -49,7 +48,6 @@ function ContactDetails(props: IContactDetailsProps) {
             }
             setSubmitted(true);
         }
-        /////////////
 
     return (
         <form onSubmit={handleSubmit}>
@@ -88,7 +86,7 @@ function ContactDetails(props: IContactDetailsProps) {
                 name="specialRequest"
                 placeholder="Message..." />
             {submitted && valid ? <div >Your reservation have been sent!</div> : null}
-            <button type="submit" onClick={saveContacts}>Confirm reservation</button>
+            <Link to='/reservations/confirmation'><button type="submit" onClick={saveContacts}>Confirm reservation</button></Link>
         </form>
     );
 }
