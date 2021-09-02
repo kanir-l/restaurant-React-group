@@ -3,7 +3,7 @@ import InputDate from '../components/reservations/InputDate';
 import InputGuests from '../components/reservations/InputGuests';
 import TimeSlots from '../components/reservations/TimeSlots';
 import { BookingModel } from '../models/BookingModel';
-import { useState } from 'react';
+import {  useState } from 'react';
 import axios from 'axios';
 
 
@@ -44,18 +44,33 @@ function Reservations() {
         phone: string, 
         email: string, 
         specialRequest: string) => {
-        
-         let res = new BookingModel(reservation._id, reservation.id, reservation.numberOfGuests, reservation.date, reservation.time, firstName, lastName, phone, email, specialRequest);
-         setReservation(res);
-         console.log(reservation);   
+            
+        let res = new BookingModel(reservation._id, reservation.id, reservation.numberOfGuests, reservation.date, reservation.time, firstName, lastName, phone, email, specialRequest);
+        setReservation(res);
+
+        // Backend
+        const comfirmationBookingUrl = "/reservations/confirmation"
+
+        axios.post(comfirmationBookingUrl, {
+            newBooking: res
+        })
+        .then(response => {
+            console.log(response);
+        })
+        .catch(error => {
+            console.log(error)
+        })
+        console.log(res)
     }
 
 
+    // State for the TimeSlots 18:00, 21:00
+    const [slot1, setSlot1] = useState(false);
+    const [slot2, setSlot2] = useState(false);
+
     function sendingGuestsAndDate() {
-        
         const eightteenUrl = "/reservations/checkingEightteen"
         const twentyoneUrl = "/reservations/checkingTwentyone"
-        
         
         // 18:00
         axios.post(eightteenUrl, {
@@ -86,8 +101,20 @@ function Reservations() {
         })  
     }
 
-    const [slot1, setSlot1] = useState(false);
-    const [slot2, setSlot2] = useState(false);
+    /* function postCreateReservation () {
+        const comfirmationBookingUrl = "/reservations/confirmation"
+
+        axios.post(comfirmationBookingUrl, {
+            newResesrvation : new BookingModel(reservation._id, reservation.id, reservation.numberOfGuests, reservation.date, reservation.time, reservation.firstName, reservation.lastName, reservation.phone, reservation.email, reservation.specialRequest)
+        })
+        .then(response => {
+            console.log(response);
+        })
+        .catch(error => {
+            console.log(error)
+        })
+        console.log(reservation)
+    } */
 
     return (
         <div className="reservations-container">
