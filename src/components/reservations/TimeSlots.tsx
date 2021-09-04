@@ -10,8 +10,10 @@ interface ITimeSlotsProps {
 
 function TimeSlots(props: ITimeSlotsProps) {
 
-    const slot1Available = props.availability.slot1;
-    const slot2Available = props.availability.slot2;
+
+  const slot1Available = props.availability.slot1;
+  const slot2Available = props.availability.slot2;
+
 
     const renderSorryMessage = () => {
         if (!slot1Available && !slot2Available) {
@@ -36,7 +38,7 @@ function TimeSlots(props: ITimeSlotsProps) {
         } else {
           return null;
         }
-      }
+    }
 
     const renderSlot2 = () => {
         if (slot2Available) {
@@ -47,9 +49,8 @@ function TimeSlots(props: ITimeSlotsProps) {
         } else {
           return null;
         }
-      }
-
-
+    }
+    
     const [time, setTime] = useState(0);
 
     const saveTime = (e: ChangeEvent<HTMLInputElement>) => {

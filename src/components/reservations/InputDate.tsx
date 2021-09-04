@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 
 interface IInputDateProps {
     inputDate(date: Date): void;
+    defaultValue?: Date;
 }
 
 function InputDate(props: IInputDateProps) {
-    const [date, setDate] = useState(new Date());  
+    const [date, setDate] = useState(new Date())
 
     const saveDate = (dateValue: Date) => {
         setDate(prevDate => {
@@ -16,6 +17,13 @@ function InputDate(props: IInputDateProps) {
             return newDate;
         })
     }
+
+    const defaultValue = props.defaultValue
+    useEffect(() => {
+        if(defaultValue) {
+            setDate(defaultValue)
+        }
+    }, [defaultValue])
     
     return (
         <div>
