@@ -61,42 +61,40 @@ function Reservations() {
         })
         console.log(res)
     }
+    
+    // State for response
+    const [responseReceived, setResponseReceived] = useState(false);
 
+    interface IAvailability {
+        slot1: boolean;
+        slot2: boolean;
+    }
 
-    // State for the TimeSlots 18:00, 21:00
-    const [slot1, setSlot1] = useState(false);
-    const [slot2, setSlot2] = useState(false);
+    // State for availability (content of response)
+    const [availability, setAvailability] = useState<IAvailability>({
+        slot1: false,
+        slot2: false
+    });
 
     function sendingGuestsAndDate() {
-        const eightteenUrl = "/reservations/checkingEightteen"
-        const twentyoneUrl = "/reservations/checkingTwentyone"
-        
-        // 18:00
-        axios.post(eightteenUrl, {
-            requestedNoOfGuests: reservation.numberOfGuests,
-            requestedDate: reservation.date
+       
+        axios.get("/reservations/checkingAvailability", {
+            params: {
+                numberOfGuests: reservation.numberOfGuests,
+                date: reservation.date
+            }
         })
         .then(response => {
             console.log(response);
-            setSlot1(response.data);
+            setAvailability(response.data);
+            setResponseReceived(true);
         })
         .catch(error => {
             console.log(error)
         })
-
-        // 21:00
-        axios.post(twentyoneUrl, {
-            requestedNoOfGuests: reservation.numberOfGuests,
-            requestedDate: reservation.date
-        })
-        .then(response => {
-            console.log(response);
-            setSlot2(response.data);
-        })
-        .catch(error => {
-            console.log(error)
-        })  
+        console.log(reservation.date);
     }
+
 
     return (
         <div className="reservations-container">
@@ -104,7 +102,7 @@ function Reservations() {
             <InputGuests inputGuests={addGuests}></InputGuests>
             <InputDate inputDate={addDate}></InputDate>
             <button onClick={sendingGuestsAndDate}>Continue</button>
-            <TimeSlots timeSlots={addTime} slot1Bookable={slot1} slot2Bookable={slot2}></TimeSlots>
+            {(responseReceived === true) ? <TimeSlots timeSlots={addTime} availability={availability}></TimeSlots> : null}
             {(reservation.time === 0) ? null : <ContactDetails contactDetails={addContacts}></ContactDetails>}
         </div>
     )
