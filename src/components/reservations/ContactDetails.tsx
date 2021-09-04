@@ -1,5 +1,6 @@
-import React, { useState, ChangeEvent } from "react";
+import React, { useState, ChangeEvent, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { BookingModel } from "../../models/BookingModel";
 
 interface IContactDetailsProps {
     contactDetails(
@@ -8,6 +9,8 @@ interface IContactDetailsProps {
         phone: string, 
         email: string, 
         specialRequest: string): void;
+
+    defaultValues?: BookingModel;
 }
 
 interface IContacts {
@@ -19,7 +22,6 @@ interface IContacts {
 }
 
 function ContactDetails(props: IContactDetailsProps) {
-
     const [contacts, setContacts] = useState<IContacts>({
         firstName: "",
         lastName: "",
@@ -27,6 +29,34 @@ function ContactDetails(props: IContactDetailsProps) {
         email: "",
         specialRequest: ""
     });
+
+    const defaultValues = props.defaultValues
+    useEffect(() => {
+        if(defaultValues) {
+            setContacts(defaultValues)
+        }
+      }, [defaultValues])
+
+    /* useEffect(() => {
+        const newContact = contacts;
+        if(defaultValues?.firstName) {
+            newContact.firstName = defaultValues?.firstName
+        }
+        if(defaultValues?.lastName) {
+            newContact.lastName = defaultValues?.lastName
+        }
+        if(defaultValues?.phone) {
+            newContact.phone = defaultValues?.phone
+        }
+        if(defaultValues?.email) {
+            newContact.email = defaultValues?.email
+        }
+        if(defaultValues?.specialRequest) {
+            newContact.specialRequest = defaultValues?.specialRequest
+        }
+        setContacts(newContact);
+        // eslint-disable-next-line 
+    }, []) */
 
     const handleInputs = (e: ChangeEvent<HTMLInputElement>) => {
         let name = e.target.name;
@@ -37,17 +67,16 @@ function ContactDetails(props: IContactDetailsProps) {
         props.contactDetails(contacts.firstName, contacts.lastName, contacts.phone, contacts.email, contacts.specialRequest);  
     }
 
-        ////////Validation
-        const [submitted, setSubmitted] = useState(false);
-        const [valid, setValid] = useState(false);
+    const [submitted, setSubmitted] = useState(false);
+    const [valid, setValid] = useState(false);
     
-        const handleSubmit = (e: React.FormEvent) => {
-            e.preventDefault();
-            if(contacts.firstName && contacts.lastName && contacts.phone && contacts.email) {
-                setValid(true);
-            }
-            setSubmitted(true);
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+        if(contacts.firstName && contacts.lastName && contacts.phone && contacts.email) {
+            setValid(true);
         }
+        setSubmitted(true);
+    }
 
     return (
         <>
