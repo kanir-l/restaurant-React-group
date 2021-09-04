@@ -61,13 +61,16 @@ function Reservations() {
         })
         console.log(res)
     }
-
+    
+    // State for response
     const [responseReceived, setResponseReceived] = useState(false);
+
 
     interface IAvailability {
         slot1: boolean;
         slot2: boolean;
     }
+
 
     // State for availability (content of response)
     const [availability, setAvailability] = useState<IAvailability>({
@@ -76,21 +79,26 @@ function Reservations() {
     });
 
     function sendingGuestsAndDate() {
+
         axios.get("/reservations/checkingAvailability", {
             params: {
                 numberOfGuests: reservation.numberOfGuests,
                 date: reservation.date
             }
         })
+
         .then(response => {
             console.log(response.data);
             setAvailability({slot1: response.data.slot1Availability, slot2: response.data.slot2Availability});
+
             setResponseReceived(true);
         })
         .catch(error => {
             console.log(error)
         })
+
     }
+
 
     return (
         <div className="reservations-container">
