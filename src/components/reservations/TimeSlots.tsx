@@ -28,28 +28,6 @@ function TimeSlots(props: ITimeSlotsProps) {
           return (<h4>The following times are available. Please select a time</h4>)
         }
     }
-
-    const renderSlot1 = () => {
-        if (slot1Available) {
-          return ( <>
-          <input type="radio" id="time1" name="time" value="18.00" onChange={saveTime}></input>
-          <label htmlFor="time1">18:00</label>
-          </>);
-        } else {
-          return null;
-        }
-    }
-
-    const renderSlot2 = () => {
-        if (slot2Available) {
-          return ( <>
-            <input type="radio" id="time2" name="time" value="21.00" onChange={saveTime}></input>
-            <label htmlFor="{time2}">21:00</label>
-          </>);
-        } else {
-          return null;
-        }
-    }
     
     const [time, setTime] = useState(0);
 
@@ -63,8 +41,10 @@ function TimeSlots(props: ITimeSlotsProps) {
         <div>
             <form>
             {renderSorryMessage()}
-            {renderSlot1()}
-            {renderSlot2()}
+            {(slot1Available) ? <input type="radio" id="time1" name="time" value="18.00" onChange={saveTime}></input> : <input disabled={true} type="radio" id="time1" name="time" value="18.00"></input>}
+            {(slot1Available) ? <label htmlFor="time1">18:00</label> : <label className="greyedOut" htmlFor="time1">18:00</label>}
+            {(slot2Available) ? <input type="radio" id="time2" name="time" value="21.00" onChange={saveTime}></input> : <input disabled={true} type="radio" id="time2" name="time" value="21.00"></input>}
+            {(slot2Available) ? <label htmlFor="time2">21:00</label> : <label className="greyedOut" htmlFor="time2">21:00</label>}
             </form>
             <p style={{visibility: "hidden"}}>{time}</p>
            
