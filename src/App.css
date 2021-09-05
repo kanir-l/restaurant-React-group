@@ -1,85 +1,95 @@
 /* Mobile Device */
+
 .App {
-  height: 100vh;
+    height: 100vh;
 }
 
-.start-container, .reservations-container, .contact-container, .admin-container, .confirmation-container {
-  width: 100%;
-  min-height: 45vh;
+.start-container,
+.reservations-container,
+.contact-container,
+.admin-container,
+.confirmation-container {
+    width: 100%;
+    min-height: 45vh;
 }
 
 .header-container {
-  width: 100%;
-  height: 45vh;
-  background-image: url("/src/hero.jpeg");
-  background-position: center;
-  background-size: cover;
-  display: flex;
-  justify-content: center;
-  justify-content: space-between;
+    width: 100%;
+    height: 45vh;
+    background-image: url("/src/hero.jpeg");
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    justify-content: space-between;
 }
 
 ul {
-  margin: 0;
+    margin: 0;
 }
 
 nav {
-  width: 600px;
-  display: flex;
-  justify-content: center;
+    width: 600px;
+    display: flex;
+    justify-content: center;
 }
 
-.logo, li, a {
-  display: inline-block;
-  text-decoration: none;
-  color: #cacaca;
-  margin: 10px;
+.logo,
+li,
+a {
+    display: inline-block;
+    text-decoration: none;
+    color: #cacaca;
+    margin: 10px;
 }
 
 .footer-container {
-  width: 100%;
-  background-color: #6e6666;
-  height: 10vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    width: 100%;
+    background-color: #6e6666;
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .social-media {
-  margin: 10px;
+    margin: 10px;
 }
 
+
 /* Admin */
+
 .admin-container {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
 .booking-container {
-  width: 90%;
+    width: 90%;
 }
 
 .booking-box {
-  margin-top: 24px;
-  display: flex;
-  align-items: center;
+    margin-top: 24px;
+    display: flex;
+    align-items: center;
 }
 
 .booking {
-  width: 600px;
+    width: 600px;
 }
 
 .edit-delete {
-  width: 75px;
+    width: 75px;
 }
 
-b, p {
-  display: inline;
-  width: 90%;
+b,
+p {
+    display: inline;
+    width: 90%;
 }
 
-
-
-
+.greyedOut {
+    color: lightgray;
+}
