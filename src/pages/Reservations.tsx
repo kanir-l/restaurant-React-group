@@ -5,6 +5,7 @@ import TimeSlots from '../components/reservations/TimeSlots';
 import { BookingModel } from '../models/BookingModel';
 import {  useState } from 'react';
 import axios from 'axios';
+import { Summary } from '../components/reservations/Summary';
 
 
 
@@ -107,6 +108,7 @@ function Reservations() {
             <InputDate inputDate={addDate}></InputDate>
             <button onClick={sendingGuestsAndDate}>Continue</button>
             {(responseReceived === true) ? <TimeSlots timeSlots={addTime} availability={availability}></TimeSlots> : null}
+            {(reservation.time === 0) ? null : <Summary inputSummary={reservation}></Summary>}
             {(reservation.time === 0) ? null : <ContactDetails contactDetails={addContacts}></ContactDetails>}
         </div>
     )
