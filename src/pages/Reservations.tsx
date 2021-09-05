@@ -104,12 +104,18 @@ function Reservations() {
     return (
         <div className="reservations-container">
             <h2>Reservations</h2>
+            {(responseReceived === true) ? null : <div>
             <InputGuests inputGuests={addGuests}></InputGuests>
             <InputDate inputDate={addDate}></InputDate>
-            <button onClick={sendingGuestsAndDate}>Continue</button>
+            {(reservation.date === "") ? <button disabled={true}>Continue</button> : <button onClick={sendingGuestsAndDate}>Continue</button>}
+            </div>}
+
             {(responseReceived === true) ? <TimeSlots timeSlots={addTime} availability={availability}></TimeSlots> : null}
-            {(reservation.time === 0) ? null : <Summary inputSummary={reservation}></Summary>}
-            {(reservation.time === 0) ? null : <ContactDetails contactDetails={addContacts}></ContactDetails>}
+
+            {(reservation.time === 0) ? null : <div>
+            <Summary inputSummary={reservation}></Summary>
+            <ContactDetails contactDetails={addContacts}></ContactDetails>
+            </div>}
         </div>
     )
 }
