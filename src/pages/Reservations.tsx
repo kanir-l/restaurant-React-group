@@ -10,18 +10,21 @@ import { Summary } from '../components/reservations/Summary';
 
 
 function Reservations() {
-    const [reservation, setReservation] = useState<BookingModel>({
-            _id: 0,
-            id: 0,
-            numberOfGuests: 0,
-            date: "",
-            time: 0,
-            firstName: "",
-            lastName: "",
-            phone: "",
-            email: "",
-            specialRequest: ""
-    });
+
+    const defaultState = {
+        _id: 0,
+        id: 0,
+        numberOfGuests: 0,
+        date: "",
+        time: 0,
+        firstName: "",
+        lastName: "",
+        phone: "",
+        email: "",
+        specialRequest: ""
+    };
+    
+    const [reservation, setReservation] = useState<BookingModel>(defaultState);
 
     const addGuests = (guestsInput: number) => {
         let res = new BookingModel(reservation._id, reservation.id, guestsInput, reservation.date, reservation.time, reservation.firstName, reservation.lastName, reservation.phone, reservation.email, reservation.specialRequest);
@@ -100,6 +103,10 @@ function Reservations() {
 
     }
 
+    const resetValues = () => {
+        setReservation(defaultState);
+        setResponseReceived(false);
+    }
 
     return (
         <div className="reservations-container">
@@ -109,9 +116,11 @@ function Reservations() {
             <InputDate inputDate={addDate}></InputDate>
             {(reservation.date === "") ? <button disabled={true}>Continue</button> : <button onClick={sendingGuestsAndDate}>Continue</button>}
             </div>}
-
-            {(responseReceived === true) ? <TimeSlots timeSlots={addTime} availability={availability}></TimeSlots> : null}
-
+                
+            {(responseReceived === true) ? <div>
+            <button onClick={resetValues}>Go back</button>
+            <TimeSlots timeSlots={addTime} availability={availability}></TimeSlots>
+            </div> : null}
             {(reservation.time === 0) ? null : <div>
             <Summary inputSummary={reservation}></Summary>
             <ContactDetails contactDetails={addContacts}></ContactDetails>
