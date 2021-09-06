@@ -1,8 +1,5 @@
 import React, { useState, ChangeEvent, useEffect, FormEvent } from "react";
-<<<<<<< HEAD
 import { Link } from "react-router-dom";
-=======
->>>>>>> Edit booking admin
 import { useHistory } from "react-router-dom";
 import { BookingModel } from "../../models/BookingModel";
 
@@ -100,12 +97,8 @@ function ContactDetails(props: IContactDetailsProps) {
                 onChange={handleInputs}
                 name="specialRequest"
                 placeholder="Message..." />
-<<<<<<< HEAD
             {submitted && valid ? <div >Your reservation have been sent!</div> : null}
             <Link to={props.submitRedirectUrl}><button type="submit" onClick={saveContacts}>Confirm reservation</button></Link>
-=======
-            <button type="submit">Confirm reservation</button>
->>>>>>> 85dd459506dcfcc1925f88152ab2729eff2ff12f
         </form>
         </>
     );
