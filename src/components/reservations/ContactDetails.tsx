@@ -1,5 +1,5 @@
-import React, { useState, ChangeEvent, useEffect } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, ChangeEvent, useEffect, FormEvent } from "react";
+import { useHistory } from "react-router-dom";
 import { BookingModel } from "../../models/BookingModel";
 
 interface IContactDetailsProps {
@@ -37,87 +37,75 @@ function ContactDetails(props: IContactDetailsProps) {
         }
       }, [defaultValues])
 
-    /* useEffect(() => {
-        const newContact = contacts;
-        if(defaultValues?.firstName) {
-            newContact.firstName = defaultValues?.firstName
-        }
-        if(defaultValues?.lastName) {
-            newContact.lastName = defaultValues?.lastName
-        }
-        if(defaultValues?.phone) {
-            newContact.phone = defaultValues?.phone
-        }
-        if(defaultValues?.email) {
-            newContact.email = defaultValues?.email
-        }
-        if(defaultValues?.specialRequest) {
-            newContact.specialRequest = defaultValues?.specialRequest
-        }
-        setContacts(newContact);
-        // eslint-disable-next-line 
-    }, []) */
-
     const handleInputs = (e: ChangeEvent<HTMLInputElement>) => {
         let name = e.target.name;
         setContacts({...contacts, [name]: e.target.value});
     }
 
-    const saveContacts = () => {
-        props.contactDetails(contacts.firstName, contacts.lastName, contacts.phone, contacts.email, contacts.specialRequest);  
-    }
+    // const saveContacts = (e: FormEvent) => {
+    //     handleSubmit(e);
+    //     props.contactDetails(contacts.firstName, contacts.lastName, contacts.phone, contacts.email, contacts.specialRequest);  
+    // }
+
+    
 
     const [submitted, setSubmitted] = useState(false);
     const [valid, setValid] = useState(false);
     
-    const handleSubmit = (e: React.FormEvent) => {
+    const saveContacts = (e: FormEvent) => {
         e.preventDefault();
+        setSubmitted(true);
         if(contacts.firstName && contacts.lastName && contacts.phone && contacts.email) {
             setValid(true);
+            props.contactDetails(contacts.firstName, contacts.lastName, contacts.phone, contacts.email, contacts.specialRequest);
+            history.push("/reservations/confirmation") 
+        } 
+        else {
+            console.log("not valid")
         }
-        setSubmitted(true);
     }
+
+    let history = useHistory();
 
     return (
         <>
         <h4>Your contact details</h4>
-        <form onSubmit={handleSubmit}>
-            {submitted && !contacts.firstName ? <span>Please enter a first name.</span> : null}
+        <form onSubmit={saveContacts}>
             <input 
                 type="text" 
                 value={contacts.firstName} 
                 onChange={handleInputs}
                 name="firstName"
                 placeholder="First Name" />
-            {submitted && !contacts.lastName ? <span>Please enter a last name.</span> : null}
+            {submitted && !contacts.firstName ? <span>Please enter a first name.</span> : null}
             <input 
                 type="text" 
                 value={contacts.lastName}
                 onChange={handleInputs}
                 name="lastName"
                 placeholder="Last Name" />
-            {submitted && !contacts.phone ? <span>Please enter a phone number</span> : null}
+            {submitted && !contacts.lastName ? <span>Please enter a last name.</span> : null}
             <input 
                 type="text" 
                 value={contacts.phone}
                 onChange={handleInputs}
                 name="phone"
                 placeholder="Phone number" />
-            {submitted && !contacts.email ? <span>Please enter an email address.</span> : null}
+            {submitted && !contacts.phone ? <span>Please enter a phone number</span> : null}
             <input 
                 type="email" 
                 value={contacts.email}
                 onChange={handleInputs}
                 name="email"
                 placeholder="Email address" />
+                {submitted && !contacts.email ? <span>Please enter an email address.</span> : null}
             <input
                 type="text" 
                 value={contacts.specialRequest} 
                 onChange={handleInputs}
                 name="specialRequest"
                 placeholder="Message..." />
-            {submitted && valid ? <div >Your reservation have been sent!</div> : null}
-            <Link to='/reservations/confirmation'><button type="submit" onClick={saveContacts}>Confirm reservation</button></Link>
+            <button type="submit">Confirm reservation</button>
         </form>
         </>
     );
