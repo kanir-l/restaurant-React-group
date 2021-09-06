@@ -1,16 +1,29 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 interface IInputGuestsProps {
     inputGuests(numberOfGuests: number): void;
+    defaultValue?: number; 
 }
 
 function InputGuests(props: IInputGuestsProps) {
-    const [guests, setGuests] = useState(0);
+    const [guests, setGuests] = useState(1)
+
+    // If [guests] state is changed, run the props in the useEffect
+    useEffect(() => {
+        props.inputGuests(guests)
+        // eslint-disable-next-line
+    }, [guests])
+
+    const defaultValue = props.defaultValue
+    useEffect(() => {
+        if(defaultValue) {
+            setGuests(defaultValue)
+        }
+    }, [defaultValue])
 
     const increment = () => {
         setGuests(prevGuest => {
             const newGuest = prevGuest + 1;
-            props.inputGuests(newGuest)
             return newGuest;
         })
     }
@@ -18,7 +31,6 @@ function InputGuests(props: IInputGuestsProps) {
     const decrement = () => {
         setGuests(prevGuest => {
             const newGuest = prevGuest - 1;
-            props.inputGuests(newGuest)
             return newGuest;
         })
     }
@@ -30,7 +42,8 @@ function InputGuests(props: IInputGuestsProps) {
 
     return (
         <div>
-            {(guests === 0) ? <button disabled={true} onClick={decrement}>Decrement</button> : <button onClick={decrement} disabled={false}>Decrement</button>}
+            <h4>Number of guests</h4>
+            {(guests === 1) ? <button disabled={true} onClick={decrement}> - </button> : <button onClick={decrement} disabled={false}> - </button>}
             <input 
                 type="number"
                 value={guests.toString()}
@@ -40,7 +53,7 @@ function InputGuests(props: IInputGuestsProps) {
                 min="1"
                 max="90"
                 />
-            <button onClick={increment}>Increment</button>
+            <button onClick={increment}> + </button>
         </div>
     );
 }

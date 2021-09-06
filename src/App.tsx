@@ -29,7 +29,7 @@ function App() {
         </Switch>
 
         <Switch>
-          <Route path='/reservations/confirmbooking'>
+          <Route path='/reservations/confirmation'>
             <Confirmation></Confirmation>
           </Route>
         </Switch>
