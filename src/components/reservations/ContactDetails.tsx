@@ -30,6 +30,9 @@ function ContactDetails(props: IContactDetailsProps) {
         specialRequest: ""
     });
 
+    const [submitted, setSubmitted] = useState(false);
+    const [valid, setValid] = useState(false);
+
     const defaultValues = props.defaultValues
     useEffect(() => {
         if(defaultValues) {
@@ -42,16 +45,6 @@ function ContactDetails(props: IContactDetailsProps) {
         setContacts({...contacts, [name]: e.target.value});
     }
 
-    // const saveContacts = (e: FormEvent) => {
-    //     handleSubmit(e);
-    //     props.contactDetails(contacts.firstName, contacts.lastName, contacts.phone, contacts.email, contacts.specialRequest);  
-    // }
-
-    
-
-    const [submitted, setSubmitted] = useState(false);
-    const [valid, setValid] = useState(false);
-    
     const saveContacts = (e: FormEvent) => {
         e.preventDefault();
         setSubmitted(true);
@@ -60,9 +53,6 @@ function ContactDetails(props: IContactDetailsProps) {
             props.contactDetails(contacts.firstName, contacts.lastName, contacts.phone, contacts.email, contacts.specialRequest);
             history.push("/reservations/confirmation") 
         } 
-        else {
-            console.log("not valid")
-        }
     }
 
     let history = useHistory();
