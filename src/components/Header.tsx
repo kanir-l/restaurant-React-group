@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom'
 
 function Header() {
     return (
-        <React.Fragment>
+        <>
+        <i className="fas fa-bars"></i>
             <div className="header-container">
                 <div className="logo">
                     <Link to='/'>NAME OR LOGO</Link>
@@ -22,7 +23,7 @@ function Header() {
                     </ul>
                 </nav>
             </div>
-        </React.Fragment>
+        </>
     )
 }
 

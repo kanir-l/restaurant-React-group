@@ -16,6 +16,7 @@ function InputDate(props: IInputDateProps) {
             props.inputDate(newDate)
             return newDate;
         })
+   
     }
 
     const defaultValue = props.defaultValue

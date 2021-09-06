@@ -1,3 +1,65 @@
+
+/* .footer-container {
+  width: 100%;
+  background-color: #6e6666;
+  height: 10vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.footer-container .social-media {
+  margin: 10px;
+}
+
+.header-container {
+  width: 100%;
+  height: 10vh;
+  background-color: white;
+  background-position: center;
+  background-size: cover;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.header-container nav {
+  width: 600px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.admin-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+
 /* Mobile Device */
 
 .App {
@@ -64,6 +126,7 @@ a {
     justify-content: center;
     flex-direction: column;
     align-items: center;
+
 }
 
 .booking-container {
@@ -71,9 +134,11 @@ a {
 }
 
 .booking-box {
+
     margin-top: 24px;
     display: flex;
     align-items: center;
+
 }
 
 .booking {
@@ -86,6 +151,48 @@ a {
 
 b,
 p {
+
+  display: inline;
+  width: 90%;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::after,
+*::before {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  height: 100vh;
+  text-rendering: optimizeLegibility;
+}
+
+.logo,
+li,
+a {
+  display: inline-block;
+  text-decoration: none;
+  color: #cacaca;
+  margin: 10px;
+} */
+
+
+/* Mobile Device */
+
+
+/* Admin */
+
+
+/*# sourceMappingURL=App.css.map */
+
     display: inline;
     width: 90%;
 }
@@ -93,3 +200,4 @@ p {
 .greyedOut {
     color: lightgray;
 }
+
