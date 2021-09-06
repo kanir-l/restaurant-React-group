@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 
 interface IInputGuestsProps {
     inputGuests(numberOfGuests: number): void;
-    defaultValue?: number; 
 }
 
 function InputGuests(props: IInputGuestsProps) {
@@ -13,13 +12,6 @@ function InputGuests(props: IInputGuestsProps) {
         props.inputGuests(guests)
         // eslint-disable-next-line
     }, [guests])
-
-    const defaultValue = props.defaultValue
-    useEffect(() => {
-        if(defaultValue) {
-            setGuests(defaultValue)
-        }
-    }, [defaultValue])
 
     const increment = () => {
         setGuests(prevGuest => {

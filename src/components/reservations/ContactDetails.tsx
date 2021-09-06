@@ -1,4 +1,5 @@
 import React, { useState, ChangeEvent, useEffect, FormEvent } from "react";
+import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { BookingModel } from "../../models/BookingModel";
 
@@ -11,6 +12,7 @@ interface IContactDetailsProps {
         specialRequest: string): void;
 
     defaultValues?: BookingModel;
+    submitRedirectUrl: string;
 }
 
 interface IContacts {
@@ -95,7 +97,8 @@ function ContactDetails(props: IContactDetailsProps) {
                 onChange={handleInputs}
                 name="specialRequest"
                 placeholder="Message..." />
-            <button type="submit">Confirm reservation</button>
+            {submitted && valid ? <div >Your reservation have been sent!</div> : null}
+            <Link to={props.submitRedirectUrl}><button type="submit" onClick={saveContacts}>Confirm reservation</button></Link>
         </form>
         </>
     );
