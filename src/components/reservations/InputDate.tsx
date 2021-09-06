@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 
 interface IInputDateProps {
     inputDate(date: Date): void;
-    defaultValue?: Date;
+    //defaultValue?: Date;
 }
 
 function InputDate(props: IInputDateProps) {
@@ -19,12 +19,12 @@ function InputDate(props: IInputDateProps) {
    
     }
 
-    const defaultValue = props.defaultValue
+   /*  const defaultValue = props.defaultValue
     useEffect(() => {
         if(defaultValue) {
             setDate(defaultValue)
         }
-    }, [defaultValue])
+    }, [defaultValue])  */
     
     return (
         <div>

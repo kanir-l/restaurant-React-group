@@ -75,7 +75,6 @@ function Reservations() {
         slot2: boolean;
     }
 
-
     // State for availability (content of response)
     const [availability, setAvailability] = useState<IAvailability>({
         slot1: false,
@@ -100,13 +99,13 @@ function Reservations() {
         .catch(error => {
             console.log(error)
         })
-
     }
 
     const resetValues = () => {
         setReservation(defaultState);
         setResponseReceived(false);
     }
+
 
     return (
         <div className="reservations-container">
@@ -123,7 +122,8 @@ function Reservations() {
             </div> : null}
             {(reservation.time === 0) ? null : <div>
             <Summary inputSummary={reservation}></Summary>
-            <ContactDetails contactDetails={addContacts}></ContactDetails>
+            <ContactDetails contactDetails={addContacts} submitRedirectUrl="/reservations/confirmation"></ContactDetails>Confirmation
+            
             </div>}
         </div>
     )
