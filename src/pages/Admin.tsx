@@ -24,18 +24,23 @@ function Admin() {
     
     // * Fetch the bookings from the DB with /admin * //
     useEffect(() => {
+        renderBookings()
+     
+    }, [])
+
+    const renderBookings = () => {
         axios.get('/admin')
         .then(res => {
-            const allBookingsFromDB = res.data;
-            setBookings(allBookingsFromDB);
+        const allBookingsFromDB = res.data;
+        setBookings(allBookingsFromDB);
         })
         .catch (error => {
             console.log(error)
         })
-    }, [])
+    }
 
     const deleteBooking = (bookingId: number) => {
-        const adminDeleteUrl = ("/admin/delete/" + bookingId)
+        const adminDeleteUrl = ("http://localhost:8080/admin/delete/" + bookingId)
         axios.delete(adminDeleteUrl)
         .then(response => {
             console.log(response);
@@ -44,7 +49,7 @@ function Admin() {
             console.log(error)
         })
 
-        window.location.reload()
+        renderBookings()
     }
 
     const [editId, setEditId] = useState<number>()
@@ -88,11 +93,8 @@ function Admin() {
         let updatedRes = new BookingModel(updatedBooking._id, updatedBooking.id, updatedBooking.numberOfGuests, updatedBooking.date, updatedBooking.time, firstName, lastName, phone, email, specialRequest);
         setUpdatedBooking(updatedRes);
 
-        window.location.reload()
-
         // Backend
-        const adminUpdateUrl = ("/admin/update") 
-            
+        const adminUpdateUrl = ("http://localhost:8080/admin/update") 
         axios.put(adminUpdateUrl, {
             updatedRes: {...updatedRes}
         })
@@ -102,6 +104,7 @@ function Admin() {
         .catch(error => {
             console.log(error)
         })  
+        window.location.reload()
     }
 
     const [showDefaultTime, setShowDefaultTime] = useState<boolean>(true)
