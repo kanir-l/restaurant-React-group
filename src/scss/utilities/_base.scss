@@ -1,3 +1,4 @@
+@import "./variables";
 html,
 body {
     margin: 0;
@@ -19,8 +20,7 @@ body {
 .logo,
 li,
 a {
-    display: inline-block;
     text-decoration: none;
-    color: #cacaca;
-    margin: 10px;
+    color: $main-clr;
+    list-style: none;
 }

@@ -122,8 +122,7 @@ function Reservations() {
             </div> : null}
             {(reservation.time === 0) ? null : <div>
             <Summary inputSummary={reservation}></Summary>
-            <ContactDetails contactDetails={addContacts} submitRedirectUrl="/reservations/confirmation"></ContactDetails>Confirmation
-            
+            <ContactDetails contactDetails={addContacts} submitRedirectUrl="/reservations/confirmation"></ContactDetails>
             </div>}
         </div>
     )

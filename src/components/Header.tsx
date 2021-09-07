@@ -7,18 +7,15 @@ function Header() {
         <i className="fas fa-bars"></i>
             <div className="header-container">
                 <div className="logo">
-                    <Link to='/'>NAME OR LOGO</Link>
+                    <Link to='/'>Name or logo</Link>
                 </div>
                 <nav>
                     <ul>
                         <li>
-                            <Link to='/reservations'>RESERVATIONS</Link>
+                            <Link to='/reservations'>Reservations</Link>
                         </li>
                         <li>
-                            <Link to='/contact'>CONTACT</Link>
-                        </li>
-                        <li>
-                            <Link to='/admin'>ADMIN</Link>
+                            <Link to='/contact'>Contact</Link>
                         </li>
                     </ul>
                 </nav>
