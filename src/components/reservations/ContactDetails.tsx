@@ -1,5 +1,4 @@
 import React, { useState, ChangeEvent, useEffect, FormEvent } from "react";
-import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { BookingModel } from "../../models/BookingModel";
 
@@ -53,7 +52,8 @@ function ContactDetails(props: IContactDetailsProps) {
         if(contacts.firstName && contacts.lastName && contacts.phone && contacts.email) {
             setValid(true);
             props.contactDetails(contacts.firstName, contacts.lastName, contacts.phone, contacts.email, contacts.specialRequest);
-            history.push("/reservations/confirmation") 
+            const submitRedirectUrl = props.submitRedirectUrl
+            history.push(submitRedirectUrl) 
         } 
     }
 
@@ -98,7 +98,7 @@ function ContactDetails(props: IContactDetailsProps) {
                 name="specialRequest"
                 placeholder="Message..." />
             {submitted && valid ? <div >Your reservation have been sent!</div> : null}
-            <Link to={props.submitRedirectUrl}><button type="submit" onClick={saveContacts}>Confirm reservation</button></Link>
+            <button type="submit" onClick={saveContacts}>Confirm reservation</button>
         </form>
         </>
     );

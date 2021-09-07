@@ -7,10 +7,7 @@ import {  useState } from 'react';
 import axios from 'axios';
 import { Summary } from '../components/reservations/Summary';
 
-
-
 function Reservations() {
-
     const defaultState = {
         _id: 0,
         id: 0,
@@ -106,7 +103,6 @@ function Reservations() {
         setResponseReceived(false);
     }
 
-
     return (
         <div className="reservations-container">
             <h2>Reservations</h2>
@@ -122,8 +118,7 @@ function Reservations() {
             </div> : null}
             {(reservation.time === 0) ? null : <div>
             <Summary inputSummary={reservation}></Summary>
-            <ContactDetails contactDetails={addContacts} submitRedirectUrl="/reservations/confirmation"></ContactDetails>Confirmation
-            
+            <ContactDetails contactDetails={addContacts} submitRedirectUrl="/reservations/confirmation"></ContactDetails>
             </div>}
         </div>
     )
