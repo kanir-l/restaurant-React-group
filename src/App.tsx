@@ -10,6 +10,7 @@ import Admin from './pages/Admin';
 import Confirmation from './pages/Confirmation';
 import { faFacebook, faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons';
 import { library } from '@fortawesome/fontawesome-svg-core';
+import Cancellation from './pages/Cancellation';
 
 library.add(faFacebook, faInstagram, faTwitter);
 
@@ -36,6 +37,12 @@ function App() {
         <Switch>
           <Route path='/reservations/confirmation'>
             <Confirmation></Confirmation>
+          </Route>
+        </Switch>
+
+        <Switch>
+          <Route path='/reservations/delete/:id' exact>
+            <Cancellation></Cancellation>
           </Route>
         </Switch>
 
