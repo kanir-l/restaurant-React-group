@@ -1,16 +1,13 @@
 import React from 'react'
 
-function Confirmations() {
-
+function Confirmation() {
     return (
-        <React.Fragment>
-            <div className="confirmation-container">
-                <b>Thank you!</b><br></br>
-                <u>A confirmation has been sent to your email.</u><br></br>
-                <i>We’re looking forward to having you.</i>
-            </div>
-        </React.Fragment>
+        <div className="confirmation-container">
+            <h2>Thank you!</h2>
+            <p>A confirmation has been sent to your email.</p>
+            <p>We’re looking forward to having you.</p>
+        </div>
     )
 }
 
-export default Confirmations
+export default Confirmation

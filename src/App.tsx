@@ -9,12 +9,17 @@ import Contact from './pages/Contact';
 import Admin from './pages/Admin';
 import Confirmation from './pages/Confirmation';
 import Booking from './pages/Booking';
+import { faFacebook, faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons';
+import { library } from '@fortawesome/fontawesome-svg-core';
+
+library.add(faFacebook, faInstagram, faTwitter);
 
 function App() {
   return (
     <div className="App">
 
       <Router>
+        <div className="container">
         <Header></Header>
 
         <Switch>
@@ -54,6 +59,7 @@ function App() {
         </Switch>
 
         <Footer></Footer>
+        </div>
       </Router>
     </div>
   );

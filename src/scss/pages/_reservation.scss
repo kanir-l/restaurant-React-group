@@ -1,0 +1,28 @@
+@import "../utilities/mixins";
+@import "../utilities/variables";
+.reservations-container {
+    .reservations-img {
+        width: 100vw;
+        height: 40vh;
+        object-fit: cover;
+        object-position: 50% 80%;
+    }
+    .reservations {
+        padding: 1rem;
+        width: 100vw;
+    }
+}
+
+//Media queries
+@media screen and(min-width: 1024px) {
+    .reservations-container {
+        @include flexCenter(row);
+        .reservations-img {
+            width: 50vw;
+            height: 100vh;
+        }
+        .reservations {
+            width: 50vw;
+        }
+    }
+}

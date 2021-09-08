@@ -6,6 +6,9 @@ import { BookingModel } from '../models/BookingModel';
 import { useState } from 'react';
 import axios from 'axios';
 import { Summary } from '../components/reservations/Summary';
+import { faArrowAltCircleLeft } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 
 function Reservations() {
     const defaultState = {
@@ -101,21 +104,23 @@ function Reservations() {
 
     return (
         <div className="reservations-container">
-            <h2>Reservations</h2>
+            <img className="reservations-img" src="images/reservations-photo.jpg" alt="Plate of mussels and soup"></img>
+            <div className="reservations">
             {(responseReceived === true) ? null : <div>
             <InputGuests inputGuests={addGuests}></InputGuests>
             <InputDate inputDate={addDate}></InputDate>
-            {(reservation.date === "") ? <button disabled={true}>Continue</button> : <button onClick={sendingGuestsAndDate}>Continue</button>}
+            {(reservation.date === "") ? <button className="main-btn-disabled" disabled={true}>Continue</button> : <button className="main-btn" onClick={sendingGuestsAndDate}>Continue</button>}
             </div>}
                 
             {(responseReceived === true) ? <div>
-            <button onClick={resetValues}>Go back</button>
+            <button className="back-btn" onClick={resetValues}><FontAwesomeIcon icon={faArrowAltCircleLeft} /></button>
             <TimeSlots timeSlots={addTime} availability={availability}></TimeSlots>
             </div> : null}
             {(reservation.time === 0) ? null : <div>
             <Summary inputSummary={reservation}></Summary>
             <ContactDetails contactDetails={addContacts} submitRedirectUrl="/reservations/confirmation"></ContactDetails>
             </div>}
+            </div>
         </div>
     )
 }
