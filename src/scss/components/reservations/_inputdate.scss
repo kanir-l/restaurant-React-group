@@ -9,3 +9,10 @@
         line-height: 1.125em;
     }
 }
+
+//Media queries
+@media screen and(min-width: 1024px) {
+    .input-date-container {
+        padding: 0 3rem;
+    }
+}

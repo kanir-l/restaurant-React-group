@@ -5,9 +5,17 @@
     height: 10vh;
     @include flexCenter(row);
     background-color: $main-clr;
+    position: relative;
     .social-media {
         margin: 1rem;
         color: white;
         font-size: 200%;
+    }
+}
+
+//Media queries
+@media screen and(min-width: 1024px) {
+    .footer {
+        @include flexLeft(row);
     }
 }

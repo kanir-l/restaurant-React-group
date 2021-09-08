@@ -1,0 +1,15 @@
+.start-container {
+    height: 80vh;
+    background-image: url(../../assets/start-photo.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-x: 35%;
+}
+
+//Media queries
+@media screen and(min-width: 1024px) {
+    .start-container {
+        background-position: bottom right;
+    }
+}

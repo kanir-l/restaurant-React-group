@@ -20,3 +20,10 @@
         }
     }
 }
+
+//Media queries
+@media screen and(min-width: 1024px) {
+    .timeslot-container {
+        padding: 0 3rem;
+    }
+}
