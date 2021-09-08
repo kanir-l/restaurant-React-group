@@ -60,7 +60,7 @@ function ContactDetails(props: IContactDetailsProps) {
     let history = useHistory();
 
     return (
-        <>
+        <div className="contact-details-container">
         <h4>Your contact details</h4>
         <form onSubmit={saveContacts}>
             <input 
@@ -92,15 +92,18 @@ function ContactDetails(props: IContactDetailsProps) {
                 placeholder="Email address" />
                 {submitted && !contacts.email ? <span>Please enter an email address.</span> : null}
             <input
+                className="request-input"
                 type="text" 
                 value={contacts.specialRequest} 
                 onChange={handleInputs}
                 name="specialRequest"
                 placeholder="Message..." />
             {submitted && valid ? <div >Your reservation have been sent!</div> : null}
-            <button type="submit" onClick={saveContacts}>Confirm reservation</button>
+
+            <button type="submit" className="main-btn" onClick={saveContacts}>Confirm reservation</button>
+
         </form>
-        </>
+        </div>
     );
 }
 

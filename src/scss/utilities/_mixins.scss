@@ -1,0 +1,35 @@
+@mixin flexCenter($direction) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: $direction;
+}
+
+@mixin flexLeft($direction) {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: $direction;
+}
+
+@mixin instruction {
+    font-size: 14px;
+    font-weight: 300;
+    text-transform: uppercase;
+}
+
+@mixin main-btn {
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+    padding: 1rem 2rem;
+    text-transform: uppercase;
+    border: none;
+    margin: 1rem 0;
+}
+
+@mixin main-btn-disabled {
+    @include main-btn;
+    background-color: rgb(206, 204, 204);
+    color: rgb(131, 130, 130);
+}

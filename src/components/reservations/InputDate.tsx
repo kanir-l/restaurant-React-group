@@ -27,7 +27,7 @@ function InputDate(props: IInputDateProps) {
     }, [defaultValue])  */
     
     return (
-        <div>
+        <div className="input-date-container">
             <h4>Date</h4>
             <Calendar prev2Label={null} next2Label={null} minDetail="year" minDate={new Date()} onChange={saveDate} value={date}></Calendar>
         </div>
