@@ -34,6 +34,11 @@ a {
     justify-content: space-between;
 }
 
+h2 {
+    text-transform: uppercase;
+    text-align: center;
+}
+
 h4 {
     @include instruction;
 }
@@ -49,4 +54,5 @@ h4 {
 .back-btn {
     border: none;
     font-size: 150%;
+    background-color: inherit;
 }

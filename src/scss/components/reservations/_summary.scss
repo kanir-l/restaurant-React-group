@@ -1,0 +1,12 @@
+@import "../../utilities/mixins";
+@import "../../utilities/variables";
+.summary-container {
+    padding: 0 2rem;
+    @include flexLeft(column);
+    p {
+        span {
+            @include instruction;
+            padding-right: 1rem;
+        }
+    }
+}

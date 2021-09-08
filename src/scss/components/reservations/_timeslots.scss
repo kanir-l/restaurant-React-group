@@ -1,0 +1,22 @@
+@import "../../utilities/mixins";
+@import "../../utilities/variables";
+.timeslot-container {
+    padding: 0 2rem;
+    form {
+        padding: 1rem 0;
+        label {
+            padding: .5rem;
+        }
+        .greyed-out {
+            color: #c6c5c5;
+        }
+        .sorry-box {
+            @include flexCenter(column);
+            text-align: center;
+            padding: 0 1rem 2rem 1rem;
+            h3 {
+                text-transform: uppercase;
+            }
+        }
+    }
+}

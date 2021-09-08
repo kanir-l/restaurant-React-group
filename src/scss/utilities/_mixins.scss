@@ -5,6 +5,13 @@
     flex-direction: $direction;
 }
 
+@mixin flexLeft($direction) {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: $direction;
+}
+
 @mixin instruction {
     font-size: 14px;
     font-weight: 300;

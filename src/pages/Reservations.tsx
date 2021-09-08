@@ -114,7 +114,6 @@ function Reservations() {
         <div className="reservations-container">
             <img className="reservations-img" src="images/reservations-photo.jpg" alt="Plate of mussels and soup"></img>
             <div className="reservations">
-            <h2>Reservations</h2>
             {(responseReceived === true) ? null : <div>
             <InputGuests inputGuests={addGuests}></InputGuests>
             <InputDate inputDate={addDate}></InputDate>
