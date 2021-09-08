@@ -10,10 +10,7 @@ import { faArrowAltCircleLeft } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
-
-
 function Reservations() {
-
     const defaultState = {
         _id: 0,
         id: 0,
@@ -108,7 +105,6 @@ function Reservations() {
         setReservation(defaultState);
         setResponseReceived(false);
     }
-
 
     return (
         <div className="reservations-container">
