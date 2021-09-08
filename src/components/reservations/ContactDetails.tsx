@@ -97,8 +97,9 @@ function ContactDetails(props: IContactDetailsProps) {
                 onChange={handleInputs}
                 name="specialRequest"
                 placeholder="Message..." />
-            {submitted && valid ? <div >Your reservation have been sent!</div> : null}
+            {/* {submitted && valid ? <div >Your reservation have been sent!</div> : null} */}
             <button type="submit" onClick={saveContacts}>Confirm reservation</button>
+            <p style={{visibility: "hidden"}}>{valid}</p>
         </form>
         </>
     );

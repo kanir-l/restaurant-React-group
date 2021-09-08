@@ -8,6 +8,7 @@ import Reservations from './pages/Reservations';
 import Contact from './pages/Contact';
 import Admin from './pages/Admin';
 import Confirmation from './pages/Confirmation';
+import Booking from './pages/Booking';
 
 function App() {
   return (
@@ -43,6 +44,12 @@ function App() {
         <Switch>
           <Route path='/admin' exact>
             <Admin></Admin>
+          </Route>
+        </Switch>
+
+        <Switch>
+          <Route path='/admin/:id' exact>
+            <Booking></Booking>
           </Route>
         </Switch>
 

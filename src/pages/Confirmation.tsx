@@ -1,6 +1,7 @@
 import React from 'react'
 
 function Confirmations() {
+
     return (
         <React.Fragment>
             <div className="confirmation-container">

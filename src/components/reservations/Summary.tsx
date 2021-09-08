@@ -8,7 +8,6 @@ interface ISummaryProps {
 
 export const Summary = (props: ISummaryProps) => {
 
-
     return (
         <div>
             <h4>You have chosen the following</h4>
