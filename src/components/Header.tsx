@@ -3,24 +3,21 @@ import { Link } from 'react-router-dom'
 
 function Header() {
     return (
-        <>
-        <i className="fas fa-bars"></i>
-            <div className="header-container">
-                <div className="logo">
-                    <Link to='/'>Name or logo</Link>
-                </div>
-                <nav>
-                    <ul>
-                        <li>
-                            <Link to='/reservations'>Reservations</Link>
-                        </li>
-                        <li>
-                            <Link to='/contact'>Contact</Link>
-                        </li>
-                    </ul>
+        <div className="header-container">
+           
+            <Link className="logo" to='/'>L'Isola</Link>
+           
+            <nav>
+                <ul>
+                    <li>
+                        <Link className="nav-link" to='/reservations'>Reservations</Link>
+                    </li>
+                    <li>
+                        <Link className="nav-link" to='/contact'>Contact</Link>
+                    </li>
+                </ul>
                 </nav>
-            </div>
-        </>
+        </div>
     )
 }
 

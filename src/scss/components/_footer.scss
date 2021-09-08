@@ -1,14 +1,13 @@
 @import "../utilities/mixins";
 @import "../utilities/variables";
-.footer-container {
+.footer {
     width: 100%;
-    background-color: $main-clr;
     height: 10vh;
     @include flexCenter(row);
-    align-self: flex-end;
+    background-color: $main-clr;
     .social-media {
         margin: 1rem;
-        color: $main-bg-clr;
+        color: white;
         font-size: 200%;
     }
 }

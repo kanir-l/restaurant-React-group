@@ -33,7 +33,7 @@ function InputGuests(props: IInputGuestsProps) {
     }
 
     return (
-        <div>
+        <div className="input-guests-container">
             <h4>Number of guests</h4>
             {(guests === 1) ? <button disabled={true} onClick={decrement}> - </button> : <button onClick={decrement} disabled={false}> - </button>}
             <input 

@@ -1,26 +1,43 @@
 @import "../utilities/mixins";
+@import "../utilities/variables";
 .header-container {
     width: 100%;
     height: 10vh;
-    background-color: white;
     @include flexCenter(row);
     justify-content: space-between;
+    font-weight: 700;
+    padding: 1rem;
+    position: fixed;
+    .logo {
+        color: white;
+    }
     nav {
         @include flexCenter(row);
         font-size: 13px;
         ul {
             li {
                 display: inline-block;
+                padding: 1rem;
+                .nav-link {
+                    color: white;
+                }
             }
         }
     }
 }
 
 //Media queries
-@media screen and(min-width: 768px) {
+@media screen and(min-width: 1024px) {
     .header-container {
         nav {
             font-size: 36px;
+            ul {
+                li {
+                    .nav-link {
+                        color: black;
+                    }
+                }
+            }
         }
     }
 }
