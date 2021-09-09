@@ -28,6 +28,18 @@
                     @include instruction;
                     margin-right: 1rem;
                 }
+                .edit-guest-input {
+                    border: none;
+                    padding: 5px;
+                    border-radius: 5px;
+                }
+                .calendar-btn {
+                    @include main-btn;
+                    background-color: white;
+                    color: black;
+                    font-size: 10px;
+                    margin: 0 1rem;
+                }
             }
         }
     }
