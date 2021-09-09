@@ -124,9 +124,7 @@ function ContactDetails(props: IContactDetailsProps) {
 
             {(checkbox === true) ? <button type="submit" className="confirm-btn" disabled={false}>Confirm reservation</button> :
             <button type="submit" className="confirm-btn" disabled={true} onClick={saveContacts}>Confirm reservation</button>}
-            
-            
-            {/* <button type="submit" className="confirm-btn" onClick={saveContacts}>Confirm reservation</button> */}
+
         </form>
         </div>
     );
