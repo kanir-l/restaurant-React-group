@@ -10,3 +10,10 @@
         }
     }
 }
+
+//Media queries
+@media screen and(min-width: 1024px) {
+    .summary-container {
+        padding: 0 3rem;
+    }
+}

@@ -63,34 +63,35 @@ function ContactDetails(props: IContactDetailsProps) {
         <div className="contact-details-container">
         <h4>Your contact details</h4>
         <form onSubmit={saveContacts}>
+            {submitted && !contacts.firstName ? <span className="required">Please enter a first name.</span> : null}
             <input 
                 type="text" 
                 value={contacts.firstName} 
                 onChange={handleInputs}
                 name="firstName"
                 placeholder="First Name" />
-            {submitted && !contacts.firstName ? <span>Please enter a first name.</span> : null}
+            {submitted && !contacts.lastName ? <span className="required">Please enter a last name.</span> : null}
             <input 
                 type="text" 
                 value={contacts.lastName}
                 onChange={handleInputs}
                 name="lastName"
                 placeholder="Last Name" />
-            {submitted && !contacts.lastName ? <span>Please enter a last name.</span> : null}
+            {submitted && !contacts.phone ? <span className="required">Please enter a phone number</span> : null}
             <input 
                 type="text" 
                 value={contacts.phone}
                 onChange={handleInputs}
                 name="phone"
                 placeholder="Phone number" />
-            {submitted && !contacts.phone ? <span>Please enter a phone number</span> : null}
+            {submitted && !contacts.email ? <span className="required">Please enter an email address.</span> : null}
             <input 
                 type="email" 
                 value={contacts.email}
                 onChange={handleInputs}
                 name="email"
                 placeholder="Email address" />
-                {submitted && !contacts.email ? <span>Please enter an email address.</span> : null}
+                
             <input
                 className="request-input"
                 type="text" 
@@ -98,8 +99,8 @@ function ContactDetails(props: IContactDetailsProps) {
                 onChange={handleInputs}
                 name="specialRequest"
                 placeholder="Message..." />
-            {/* {submitted && valid ? <div >Your reservation have been sent!</div> : null} */}
-            <button type="submit" className="main-btn" onClick={saveContacts}>Confirm reservation</button>
+
+            <button type="submit" className="confirm-btn" onClick={saveContacts}>Confirm reservation</button>
         </form>
         </div>
     );

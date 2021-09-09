@@ -1,0 +1,29 @@
+@import "../utilities/mixins";
+@import "../utilities/variables";
+.contact-container {
+    height: 100%;
+    .contact-img {
+        width: 100vw;
+        height: 40vh;
+        object-fit: cover;
+        object-position: 50% 80%;
+    }
+    .contact {
+        @include flexLeft(column);
+        padding: 0 0 2rem 2rem;
+        h2,
+        h3 {
+            text-align: left;
+        }
+        span {
+            @include instruction;
+            margin-right: 1rem;
+        }
+        .map {
+            width: 90%;
+            height: 30vh;
+            border: none;
+            border-radius: 10px;
+        }
+    }
+}

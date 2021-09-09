@@ -11,6 +11,7 @@
             color: #c6c5c5;
         }
         .sorry-box {
+            min-height: 30vh;
             @include flexCenter(column);
             text-align: center;
             padding: 0 1rem 2rem 1rem;
@@ -18,5 +19,12 @@
                 text-transform: uppercase;
             }
         }
+    }
+}
+
+//Media queries
+@media screen and(min-width: 1024px) {
+    .timeslot-container {
+        padding: 0 3rem;
     }
 }

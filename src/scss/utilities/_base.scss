@@ -28,15 +28,8 @@ a {
 }
 
 .container {
-    height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-}
-
-h2 {
-    text-transform: uppercase;
-    text-align: center;
 }
 
 h4 {
@@ -55,4 +48,19 @@ h4 {
     border: none;
     font-size: 150%;
     background-color: inherit;
+    margin: 1rem 2rem 0 2rem;
+    padding: 0;
+}
+
+//Media queries
+@media screen and(min-width: 1024px) {
+    .back-btn {
+        margin: 0 0 0 3rem;
+    }
+    .main-btn {
+        margin: 3rem;
+    }
+    .main-btn-disabled {
+        margin: 3rem;
+    }
 }
