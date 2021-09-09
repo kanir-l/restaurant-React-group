@@ -51,6 +51,13 @@
             .booking-box {
                 width: 50vw;
                 flex-direction: (row);
+                .booking {
+                    .sorry-box {
+                        min-height: 30vh;
+                        font-size: 16px;
+                        align-items: start;
+                    }
+                }
             }
         }
     }

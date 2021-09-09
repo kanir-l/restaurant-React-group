@@ -3,16 +3,10 @@
 .timeslot-container {
     padding: 0 2rem;
     .sorry-box {
-        min-height: 30vh;
-        @include flexCenter(column);
-        text-align: center;
-        padding: 0 1rem 2rem 1rem;
-        h3 {
-            text-transform: uppercase;
-        }
+        @include message;
     }
     form {
-        padding: 1rem 0;
+        padding-top: 1rem;
         input {
             cursor: pointer;
         }
@@ -29,5 +23,8 @@
 @media screen and(min-width: 1024px) {
     .timeslot-container {
         padding: 0 3rem;
+        .sorry-box {
+            min-height: 80vh;
+        }
     }
 }
