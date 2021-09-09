@@ -2,6 +2,15 @@
 @import "../../utilities/variables";
 .timeslot-container {
     padding: 0 2rem;
+    .sorry-box {
+        min-height: 30vh;
+        @include flexCenter(column);
+        text-align: center;
+        padding: 0 1rem 2rem 1rem;
+        h3 {
+            text-transform: uppercase;
+        }
+    }
     form {
         padding: 1rem 0;
         input {
@@ -12,15 +21,6 @@
         }
         .greyed-out {
             color: #c6c5c5;
-        }
-        .sorry-box {
-            min-height: 30vh;
-            @include flexCenter(column);
-            text-align: center;
-            padding: 0 1rem 2rem 1rem;
-            h3 {
-                text-transform: uppercase;
-            }
         }
     }
 }
