@@ -14,6 +14,7 @@
         h2,
         h3 {
             text-align: left;
+            text-transform: uppercase;
         }
         span {
             @include instruction;
@@ -24,6 +25,22 @@
             height: 30vh;
             border: none;
             border-radius: 10px;
+            margin: 2rem 0;
+        }
+    }
+}
+
+//Media queries
+@media screen and(min-width: 1024px) {
+    .contact-container {
+        display: flex;
+        flex-direction: row;
+        .contact-img {
+            width: 50vw;
+            min-height: 90vh;
+        }
+        .contact {
+            width: 50vw;
         }
     }
 }
