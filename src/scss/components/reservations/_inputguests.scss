@@ -7,5 +7,13 @@
         width: 3rem;
         font-size: 18px;
         text-align: center;
+        cursor: pointer;
+    }
+}
+
+//Media queries
+@media screen and(min-width: 1024px) {
+    .input-guests-container {
+        padding: 3rem;
     }
 }

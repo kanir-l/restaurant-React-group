@@ -1,6 +1,7 @@
 @import "../utilities/mixins";
 @import "../utilities/variables";
 .reservations-container {
+    height: 100%;
     .reservations-img {
         width: 100vw;
         height: 40vh;
@@ -10,16 +11,18 @@
     .reservations {
         padding: 1rem;
         width: 100vw;
+        min-height: 80vh;
     }
 }
 
 //Media queries
 @media screen and(min-width: 1024px) {
     .reservations-container {
-        @include flexCenter(row);
+        display: flex;
+        flex-direction: row;
         .reservations-img {
             width: 50vw;
-            height: 100vh;
+            min-height: 120vh;
         }
         .reservations {
             width: 50vw;

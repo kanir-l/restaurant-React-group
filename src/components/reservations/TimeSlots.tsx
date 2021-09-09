@@ -39,13 +39,13 @@ function TimeSlots(props: ITimeSlotsProps) {
 
     return (
         <div className="timeslot-container">
-            <form>
             {renderSorryMessage()}
+            {(!slot1Available && !slot2Available) ? null : <form>
             {(slot1Available) ? <input type="radio" id="time1" name="time" value="18.00" onChange={saveTime}></input> : <input disabled={true} type="radio" id="time1" name="time" value="18.00"></input>}
             {(slot1Available) ? <label htmlFor="time1">18:00</label> : <label className="greyed-out" htmlFor="time1">18:00</label>}
             {(slot2Available) ? <input type="radio" id="time2" name="time" value="21.00" onChange={saveTime}></input> : <input disabled={true} type="radio" id="time2" name="time" value="21.00"></input>}
             {(slot2Available) ? <label htmlFor="time2">21:00</label> : <label className="greyed-out" htmlFor="time2">21:00</label>}
-            </form>
+            </form>}
             <p style={{visibility: "hidden"}}>{time}</p>
         </div>
     );

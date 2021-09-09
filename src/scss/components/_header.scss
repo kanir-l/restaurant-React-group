@@ -7,19 +7,18 @@
     justify-content: space-between;
     font-weight: 700;
     padding: 1rem;
-    position: absolute;
+    background-color: white;
     .logo {
-        color: white;
+        color: $main-clr;
     }
     nav {
         @include flexCenter(row);
-        font-size: 13px;
         ul {
             li {
                 display: inline-block;
                 padding: 1rem;
                 .nav-link {
-                    color: white;
+                    color: $main-clr;
                 }
             }
         }
@@ -29,8 +28,15 @@
 //Media queries
 @media screen and(min-width: 1024px) {
     .header-container {
-        nav {
+        height: 12vh;
+        .logo {
             font-size: 36px;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+        nav {
+            font-size: 14px;
+            text-transform: uppercase;
             ul {
                 li {
                     .nav-link {

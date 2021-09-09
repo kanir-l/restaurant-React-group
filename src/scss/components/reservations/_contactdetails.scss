@@ -9,9 +9,21 @@
             border: none;
             margin-bottom: 1rem;
             padding-left: 1rem;
+            border-radius: 5px;
         }
-        .request-input {
-            height: 5rem;
+        .required {
+            color: red;
+            font-size: 14px;
         }
+        .confirm-btn {
+            @include main-btn;
+        }
+    }
+}
+
+//Media queries
+@media screen and(min-width: 1024px) {
+    .contact-details-container {
+        padding: 0 3rem;
     }
 }
