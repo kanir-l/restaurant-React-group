@@ -5,6 +5,8 @@ import { BookingModel } from '../models/BookingModel'
 import InputDate from '../components/reservations/InputDate'
 import TimeSlots from '../components/reservations/TimeSlots'
 import ContactDetails from '../components/reservations/ContactDetails'
+import { faEdit, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function Admin() {
     const [bookings, setBookings] = useState<BookingModel[]>([])
@@ -118,6 +120,8 @@ function Admin() {
         slot2: false
     })
 
+    const [responseReceived, setResponseReceived] = useState(false);
+
     const sendingGuestsAndDate = () => {
         axios.get("/admin/checkingAvailabilityEdit", {
             params: {
@@ -129,36 +133,13 @@ function Admin() {
         .then(response => {
             console.log(response.data);
             setAvailability({slot1: response.data.slot1Availability, slot2: response.data.slot2Availability});
+            setResponseReceived(true);
         })
         .catch(error => {
             console.log(error)
         })
 
         setShowDefaultTime(false)
-    }
-
-    const defaultTime = (defaultTime: number) => {
-        if (showDefaultTime === true) {
-            return (
-            <div>
-            { defaultTime === 18 ? 
-                <div className ="timeSlot">
-                <input type="radio" id="time1" name="time" value="18.00" checked={defaultTime === 18}></input>
-                <label htmlFor="time1">18:00</label>
-                </div> 
-            :
-                <div className ="timeSlot">
-                <input type="radio" id="time2" name="time" value="21.00" checked={defaultTime === 21}></input>
-                <label htmlFor="time2">21:00</label> 
-                </div> 
-            }
-            </div> )
-        } else {
-            return (
-            <div>
-                <TimeSlots timeSlots={updatedTimeInput} availability={availability}></TimeSlots> 
-            </div> )
-        }
     }
 
     // On click with link to specific Id booking page
@@ -173,50 +154,49 @@ function Admin() {
             <div className="booking-container">
                 <div className = "booking-box">
                     <div className = "booking">
-                        <b>ID:</b> 
-                        <p onClick={() => goToBooking(booking._id)}>{booking._id}</p>
+                         
+                        <p onClick={() => goToBooking(booking._id)}><b>Id</b>{booking._id}</p>
                         {booking._id === editId ? 
                             <div>
-                                <b>NO: OF GUESTS</b> 
-                                <input type="number" value = {updatedBooking.numberOfGuests} onChange={updatedGuestsInput} name="numberOfGuests" id="numberOfGuests" min="1" max="90" /> <br></br>
-
-                                <b>BOOKING Date:</b>
-                                <p>{updatedBooking.date}</p>
-                                <button onClick={showCalendar}>Calendar</button>
-                                { calendar ? <InputDate inputDate={updatedDateInput}></InputDate> : null } <br></br>
+                                <b>Guests</b> 
+                                <input type="number" value = {updatedBooking.numberOfGuests} onChange={updatedGuestsInput} name="numberOfGuests" id="numberOfGuests" min="1" max="90" /> 
+                                
+                                
+                                
+                                <p><b>Date</b>{updatedBooking.date} <button onClick={showCalendar}>Pick new date and time</button></p>
+                                
+                                {(calendar) ? <div><InputDate inputDate={updatedDateInput}></InputDate> <button className="main-btn" onClick={sendingGuestsAndDate}>Check availability</button>  </div>: null } 
                             
-                                <button onClick={sendingGuestsAndDate}>Continue</button> <br></br>
-                    
-                                <b>BOOKING TIME:</b> 
-                                {defaultTime(booking.time)}
-           
+                                {(responseReceived === true && calendar) ? <div><TimeSlots timeSlots={updatedTimeInput} availability={availability}></TimeSlots></div> : null}
+                                
+                            
                                 {<ContactDetails contactDetails={updatedContacts} defaultValues={booking} submitRedirectUrl="/admin"></ContactDetails>}
                             </div> 
                         :
                             <div>
-                                <b>NO: OF GUESTS</b> 
-                                <p>{booking.numberOfGuests}</p> <br></br>
-                                <b>BOOKING Date:</b> 
-                                <p>{booking.date}</p> <br></br>
-                                <b>BOOKING TIME:</b> 
-                                <p>{booking.time}</p> <br></br>
-                                <b>FIRSTNAME:</b> 
-                                <p>{booking.firstName}</p><br></br>
-                                <b>LASTNAME:</b>
-                                <p>{booking.lastName}</p> <br></br>
-                                <b>PHONE NO:</b> 
-                                <p>{booking.phone}</p> <br></br>
-                                <b>EMAIL:</b> 
-                                <p>{booking.email}</p><br></br>
-                                <b>SPEICAL REQUEST:</b> 
-                                <p>{booking.specialRequest}</p>
+                                
+                                <p><b>Guests</b>{booking.numberOfGuests}</p> 
+                                 
+                                <p><b>Date</b>{booking.date}</p> 
+                                 
+                                <p><b>Time</b>{booking.time}:00</p> 
+                                
+                                <p><b>First name</b>{booking.firstName}</p>
+                                
+                                <p><b>Last name</b>{booking.lastName}</p> 
+                                
+                                <p><b>Phone</b> {booking.phone}</p> 
+                                 
+                                <p><b>Email</b>{booking.email}</p>
+                                
+                                <p><b>Special request</b>{booking.specialRequest}</p>
                             </div> 
                         }
                     </div>
             
                     <div className="edit-delete">
-                        <button onClick={() => updateBooking(booking._id, booking.numberOfGuests, booking.date, booking.time, booking.phone, booking.email, booking.firstName, booking.lastName, booking.specialRequest)}>Edit</button>
-                        <button onClick={() => deleteBooking(booking._id)}>Delete</button>
+                        <button className="edit-btn" onClick={() => updateBooking(booking._id, booking.numberOfGuests, booking.date, booking.time, booking.phone, booking.email, booking.firstName, booking.lastName, booking.specialRequest)}><FontAwesomeIcon icon={faEdit}/></button>
+                        <button className="delete-btn" onClick={() => deleteBooking(booking._id)}><FontAwesomeIcon icon={faTrashAlt} /></button>
                     </div>
                 </div>
             </div>  
@@ -226,7 +206,7 @@ function Admin() {
   
     return (
         <div className="admin-container">
-            <b>All Bookings</b>
+            <h2>All Reservations</h2>
             {printAllBookings} 
         </div>
     )

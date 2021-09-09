@@ -4,6 +4,9 @@
     padding: 0 2rem;
     form {
         padding: 1rem 0;
+        input {
+            cursor: pointer;
+        }
         label {
             padding: .5rem;
         }

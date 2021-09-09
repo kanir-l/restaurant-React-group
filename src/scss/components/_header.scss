@@ -9,7 +9,7 @@
     padding: 1rem;
     background-color: white;
     .logo {
-        color: black;
+        color: $main-clr;
     }
     nav {
         @include flexCenter(row);
@@ -18,7 +18,7 @@
                 display: inline-block;
                 padding: 1rem;
                 .nav-link {
-                    color: black;
+                    color: $main-clr;
                 }
             }
         }
@@ -28,11 +28,15 @@
 //Media queries
 @media screen and(min-width: 1024px) {
     .header-container {
+        height: 12vh;
         .logo {
-            font-size: 20px;
+            font-size: 36px;
+            text-transform: uppercase;
+            font-weight: 700;
         }
         nav {
-            font-size: 20px;
+            font-size: 14px;
+            text-transform: uppercase;
             ul {
                 li {
                     .nav-link {
