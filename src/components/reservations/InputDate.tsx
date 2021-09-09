@@ -4,7 +4,6 @@ import 'react-calendar/dist/Calendar.css';
 
 interface IInputDateProps {
     inputDate(date: Date): void;
-    //defaultValue?: Date;
 }
 
 function InputDate(props: IInputDateProps) {
@@ -16,15 +15,7 @@ function InputDate(props: IInputDateProps) {
             props.inputDate(newDate)
             return newDate;
         })
-   
     }
-
-   /*  const defaultValue = props.defaultValue
-    useEffect(() => {
-        if(defaultValue) {
-            setDate(defaultValue)
-        }
-    }, [defaultValue])  */
     
     return (
         <div className="input-date-container">

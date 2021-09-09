@@ -181,7 +181,7 @@ function Admin() {
                                 <input type="number" value = {updatedBooking.numberOfGuests} onChange={updatedGuestsInput} name="numberOfGuests" id="numberOfGuests" min="1" max="90" /> <br></br>
 
                                 <b>BOOKING Date:</b>
-                                <p>{updatedBooking.date}</p>
+                                <span>{updatedBooking.date}</span>
                                 <button onClick={showCalendar}>Calendar</button>
                                 { calendar ? <InputDate inputDate={updatedDateInput}></InputDate> : null } <br></br>
                             

@@ -1,9 +1,46 @@
-import React from 'react';
+ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import App from './App';
+import userEvent from '@testing-library/user-event';
+import { Router } from 'react-router';
+import {createMemoryHistory} from 'history'
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
-});
+// Checking Navigation in the header
+test('start should go the the correct route', () => {
+  const history = createMemoryHistory()
+  history.push('/')
+  render(
+    <Router history={history}>
+      <App />
+    </Router>,
+  )
+
+  expect(screen.getByText(/L'Isola/i)).toBeInTheDocument()
+})  
+
+test('reservations should go the the correct route', () => {
+  const history = createMemoryHistory()
+  history.push('/reservations')
+  render(
+    <Router history={history}>
+      <App />
+    </Router>,
+  )
+
+  expect(screen.getByText(/reservations/i)).toBeInTheDocument()
+}) 
+
+
+test('admin should go the the correct route', () => {
+  const history = createMemoryHistory()
+  history.push('/contact')
+  render(
+    <Router history={history}>
+      <App />
+    </Router>,
+  )
+
+  expect(screen.getByText(/contact/i)).toBeInTheDocument()
+})  
+
+

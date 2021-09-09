@@ -16,7 +16,7 @@ function Header() {
                         <Link className="nav-link" to='/contact'>Contact</Link>
                     </li>
                 </ul>
-                </nav>
+            </nav>
         </div>
     )
 }
