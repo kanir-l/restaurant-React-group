@@ -39,15 +39,15 @@ const Booking= () => {
 
     //Deleting the booking with the specific Id by sending with the params
     const deleteBooking = (bookingId: number) => {
-        const adminDeleteUrl = ("http://localhost:8080/admin/delete/" + bookingId)
+        const adminDeleteUrl = ("http://localhost:8080/admin/delete/" + bookingId);
         axios.delete(adminDeleteUrl)
         .then(response => {
             console.log(response);
         })
         .catch(error => {
-            console.log(error)
+            console.log(error);
         })
-        history.push("/reservations")
+        history.push("/");
     }
     let history = useHistory();
 
