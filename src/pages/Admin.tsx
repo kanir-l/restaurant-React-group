@@ -161,15 +161,14 @@ function Admin() {
                                 <b>Guests</b> 
                                 <input className="edit-guest-input" type="number" value = {updatedBooking.numberOfGuests} onChange={updatedGuestsInput} name="numberOfGuests" id="numberOfGuests" min="1" max="90" /> 
                                 
-                                
+                                <p style={{visibility: "hidden"}}>{showDefaultTime}</p>
                                 
                                 <p><b>Date</b>{updatedBooking.date} <button className="calendar-btn" onClick={showCalendar}>Change date / time</button></p>
                                 
                                 {(calendar) ? <div><InputDate inputDate={updatedDateInput}></InputDate> <button className="main-btn" onClick={sendingGuestsAndDate}>Check availability</button>  </div>: null } 
                             
                                 {(responseReceived === true && calendar) ? <div><TimeSlots timeSlots={updatedTimeInput} availability={availability}></TimeSlots></div> : null}
-                                
-                            
+         
                                 {<ContactDetails contactDetails={updatedContacts} defaultValues={booking} submitRedirectUrl="/admin"></ContactDetails>}
                             </div> 
                         :

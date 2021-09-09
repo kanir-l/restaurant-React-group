@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent, useEffect, FormEvent } from "react";
+import { useState, ChangeEvent, useEffect, FormEvent } from "react";
 import { useHistory } from "react-router-dom";
 import { BookingModel } from "../../models/BookingModel";
 
@@ -33,23 +33,34 @@ function ContactDetails(props: IContactDetailsProps) {
 
     const [submitted, setSubmitted] = useState(false);
     const [valid, setValid] = useState(false);
+    const [checkbox, setCheckbox] = useState(false);
 
     const defaultValues = props.defaultValues
     useEffect(() => {
         if(defaultValues) {
             setContacts(defaultValues)
         }
-      }, [defaultValues])
+      }, [defaultValues]);
 
     const handleInputs = (e: ChangeEvent<HTMLInputElement>) => {
         let name = e.target.name;
         setContacts({...contacts, [name]: e.target.value});
     }
 
+    const handleCheckbox = () => {
+        let booleanVariable = false;
+        if (booleanVariable === false) {
+            booleanVariable = true;
+        } else {
+            booleanVariable = false;
+        }
+        setCheckbox(booleanVariable);
+    }
+
     const saveContacts = (e: FormEvent) => {
         e.preventDefault();
         setSubmitted(true);
-        if(contacts.firstName && contacts.lastName && contacts.phone && contacts.email) {
+        if(contacts.firstName && contacts.lastName && contacts.phone && contacts.email && (checkbox === true)) {
             setValid(true);
             props.contactDetails(contacts.firstName, contacts.lastName, contacts.phone, contacts.email, contacts.specialRequest);
             const submitRedirectUrl = props.submitRedirectUrl
@@ -100,7 +111,20 @@ function ContactDetails(props: IContactDetailsProps) {
                 name="specialRequest"
                 placeholder="Message..." />
 
-            <button type="submit" className="confirm-btn" onClick={saveContacts}>Confirm reservation</button>
+            <div className="gdpr-container">
+                <input type="checkbox" id="gdprCheckbox" name="gdprCheckbox" required onChange={handleCheckbox}/>
+                <label htmlFor="gdprCheckbox">
+                    <div>
+                        By making a reservation I understand and consent to the information provided by me will be saved by L'Isola.
+                        For more information click the link:
+                        <a href="https://www.imy.se/verksamhet/dataskydd/det-har-galler-enligt-gdpr/">Terms and conditions.</a>
+                    </div>
+                </label>
+            </div>
+
+            {(checkbox === true) ? <button type="submit" className="confirm-btn" disabled={false}>Confirm reservation</button> :
+            <button type="submit" className="confirm-btn" disabled={true} onClick={saveContacts}>Confirm reservation</button>}
+
         </form>
         </div>
     );

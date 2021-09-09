@@ -18,6 +18,27 @@
         .confirm-btn {
             @include main-btn;
         }
+
+        .gdpr-container {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem;
+            letter-spacing: 1px;
+
+            input {
+                width: 3rem;
+                // height: 3rem;s
+            }
+            label {
+                margin-left: 1rem;
+                line-height: 1.5rem;
+                div {
+                    a {
+                        margin-left: 5px;
+                    }
+                }
+            }
+        }
     }
 }
 
