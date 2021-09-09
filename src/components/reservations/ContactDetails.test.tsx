@@ -1,18 +1,25 @@
-/* import React from 'react';
+import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import ContactDetails from './ContactDetails';
 
+const mockHistoryPush = jest.fn();
+
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useHistory: () => ({
+    push: mockHistoryPush,
+  }),
+}));
+
 test("Show form", () => {
     let mockFunction = jest.fn()
-    render(<ContactDetails contactDetails={mockFunction}></ContactDetails>)
+    render(<ContactDetails submitRedirectUrl="/" contactDetails={mockFunction}></ContactDetails>)
 
-    screen.debug()
-
-    let firstName = screen.getAllByPlaceholderText(/first Name/i)
-    let lastName = screen.getAllByPlaceholderText(/last Name/i)
-    let phone = screen.getAllByPlaceholderText(/phone number/i)
-    let email = screen.getAllByPlaceholderText(/email address/i)
-    let specialRequest = screen.getAllByPlaceholderText(/Message.../i)
+    let firstName = screen.getByPlaceholderText(/First Name/i)
+    let lastName = screen.getByPlaceholderText(/Last Name/i)
+    let phone = screen.getByPlaceholderText(/Phone number/i)
+    let email = screen.getByPlaceholderText(/Email address/i)
+    let specialRequest = screen.getByPlaceholderText(/Message\.\.\./i)
     let button = screen.getByText(/Confirm reservation/i)
 
     expect(firstName).toBeInTheDocument()
@@ -28,13 +35,11 @@ test("Send Values from form", () => {
     let mockLink = "http://localhost:3000/reservations/confirmation"
     render(<ContactDetails contactDetails={mockFunction} submitRedirectUrl={mockLink}></ContactDetails>)
 
-    screen.debug()
-
-    let firstName = screen.getByPlaceholderText(/first Name/i)
-    let lastName = screen.getByPlaceholderText(/last Name/i)
-    let phone = screen.getByPlaceholderText(/phone number/i)
-    let email = screen.getByPlaceholderText(/email address/i)
-    let specialRequest = screen.getByPlaceholderText(/Message.../i)
+    let firstName = screen.getByPlaceholderText(/First Name/i)
+    let lastName = screen.getByPlaceholderText(/Last Name/i)
+    let phone = screen.getByPlaceholderText(/Phone number/i)
+    let email = screen.getByPlaceholderText(/Email address/i)
+    let specialRequest = screen.getByPlaceholderText(/Message\.\.\./i)
     let button = screen.getByText(/Confirm reservation/i)
 
     fireEvent.change(firstName, {target: { name: 'firstName', value: 'Jane'}})
@@ -46,5 +51,5 @@ test("Send Values from form", () => {
     fireEvent.click(button);
 
     expect(mockFunction).toHaveBeenCalled();
-    expect(mockFunction).toHaveBeenCalledWith({firstName: 'Jane', lastName: 'Doe', phone: '0123456789', email: 'info@janedoe.com', specialRequest: 'VIP room'})
-}) */
+    expect(mockFunction).toHaveBeenCalledWith('Jane', 'Doe', '0123456789', 'info@janedoe.com', 'VIP room')
+})  
