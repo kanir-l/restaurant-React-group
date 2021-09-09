@@ -33,23 +33,40 @@ function ContactDetails(props: IContactDetailsProps) {
 
     const [submitted, setSubmitted] = useState(false);
     const [valid, setValid] = useState(false);
+    const [checkbox, setCheckbox] = useState(false);
 
     const defaultValues = props.defaultValues
     useEffect(() => {
         if(defaultValues) {
             setContacts(defaultValues)
         }
-      }, [defaultValues])
+      }, [defaultValues]);
+
+    // useEffect(() => {
+    //     setCheckbox
+    //     //booleanVariable = !booleanVariable;
+    // }, [checkbox]);
 
     const handleInputs = (e: ChangeEvent<HTMLInputElement>) => {
         let name = e.target.name;
         setContacts({...contacts, [name]: e.target.value});
     }
 
+    const handleCheckbox = () => {
+        let booleanVariable = false;
+        if (booleanVariable === false) {
+            booleanVariable = true;
+        } else {
+            booleanVariable = false;
+        }
+        setCheckbox(booleanVariable);
+        //booleanVariable = !booleanVariable;
+    }
+
     const saveContacts = (e: FormEvent) => {
         e.preventDefault();
         setSubmitted(true);
-        if(contacts.firstName && contacts.lastName && contacts.phone && contacts.email) {
+        if(contacts.firstName && contacts.lastName && contacts.phone && contacts.email && (checkbox === true)) {
             setValid(true);
             props.contactDetails(contacts.firstName, contacts.lastName, contacts.phone, contacts.email, contacts.specialRequest);
             const submitRedirectUrl = props.submitRedirectUrl
@@ -100,7 +117,17 @@ function ContactDetails(props: IContactDetailsProps) {
                 name="specialRequest"
                 placeholder="Message..." />
 
-            <button type="submit" className="confirm-btn" onClick={saveContacts}>Confirm reservation</button>
+            {(checkbox === false) && submitted ? <span className="required">Please read and check the box to confirm.</span> : null}
+            <div className="gdpr-container">
+                <input type="checkbox" id="gdprCheckbox" name="gdprCheckbox" required onChange={handleCheckbox}/>
+                <label htmlFor="gdprCheckbox">I agree to the terms and condtions.</label>
+            </div>
+
+            {(checkbox === true) ? <button type="submit" className="confirm-btn" disabled={false}>Confirm reservation</button> :
+            <button type="submit" className="confirm-btn" disabled={true} onClick={saveContacts}>Confirm reservation</button>}
+            
+            
+            {/* <button type="submit" className="confirm-btn" onClick={saveContacts}>Confirm reservation</button> */}
         </form>
         </div>
     );
