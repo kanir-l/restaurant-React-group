@@ -29,7 +29,6 @@ test('reservations should go the the correct route', () => {
   expect(screen.getByText(/reservations/i)).toBeInTheDocument()
 }) 
 
-
 test('admin should go the the correct route', () => {
   const history = createMemoryHistory()
   history.push('/contact')
@@ -41,5 +40,3 @@ test('admin should go the the correct route', () => {
 
   expect(screen.getByText(/contact/i)).toBeInTheDocument()
 })  
-
-
