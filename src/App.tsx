@@ -11,7 +11,7 @@ import Confirmation from './pages/Confirmation';
 import Booking from './pages/Booking';
 import { faFacebook, faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import Cancellation from './pages/Cancellation';
+// import Cancellation from './pages/Cancellation';
 
 library.add(faFacebook, faInstagram, faTwitter);
 
@@ -41,11 +41,11 @@ function App() {
           </Route>
         </Switch>
 
-        <Switch>
+        {/* <Switch>
           <Route path='/reservations/delete/:id' exact>
             <Cancellation></Cancellation>
           </Route>
-        </Switch>
+        </Switch> */}
 
         <Switch>
           <Route path='/contact' exact>
