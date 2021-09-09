@@ -52,29 +52,29 @@ const Booking= () => {
     let history = useHistory();
 
     return (
-        <>
-            <div>
-                <b>NO: OF GUESTS</b> 
-                <p>{booking.numberOfGuests}</p> <br></br>
-                <b>BOOKING Date:</b> 
-                <p>{booking.date}</p> <br></br>
-                <b>BOOKING TIME:</b> 
-                <p>{booking.time}</p> <br></br>
-                <b>FIRSTNAME:</b> 
-                <p>{booking.firstName}</p><br></br>
-                <b>LASTNAME:</b>
-                <p>{booking.lastName}</p> <br></br>
-                <b>PHONE NO:</b> 
-                <p>{booking.phone}</p> <br></br>
-                <b>EMAIL:</b> 
-                <p>{booking.email}</p><br></br>
-                <b>SPEICAL REQUEST:</b> 
-                <p>{booking.specialRequest}</p>  
+        
+        <div className="cancel-booking">
+            <div className="booking">
+                <h2>Your reservation</h2>
+            <p><b>Guests</b>{booking.numberOfGuests}</p> 
+                                 
+                <p><b>Date</b>{booking.date}</p> 
+                                  
+                <p><b>Time</b>{booking.time}:00</p> 
+                                 
+                <p><b>Name</b>{booking.firstName} {booking.lastName}</p>
+                                 
+                <p><b>Phone</b> {booking.phone}</p> 
+                                  
+                <p><b>Email</b>{booking.email}</p>
+                                 
+                <p><b>Special request</b>{booking.specialRequest}</p>
             </div>
             <div className="edit-delete">
-                <button onClick={() => deleteBooking(booking._id)}>Delete</button>
+                <button className="main-btn" onClick={() => deleteBooking(booking._id)}>Cancel reservation</button>
             </div>
-    </>
+            </div>
+    
     )
 }
 
