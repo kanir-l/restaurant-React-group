@@ -47,7 +47,6 @@ function TimeSlots(props: ITimeSlotsProps) {
             {(slot2Available) ? <label htmlFor="time2">21:00</label> : <label className="greyed-out" htmlFor="time2">21:00</label>}
             </form>
             <p style={{visibility: "hidden"}}>{time}</p>
-           
         </div>
     );
 }

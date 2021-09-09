@@ -101,7 +101,6 @@ function ContactDetails(props: IContactDetailsProps) {
                 placeholder="Message..." />
 
             <button type="submit" className="confirm-btn" onClick={saveContacts}>Confirm reservation</button>
-
         </form>
         </div>
     );
