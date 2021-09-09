@@ -19,7 +19,7 @@ function Header() {
                         <Link className="nav-link" to='/admin'>Admin</Link>
                     </li>
                 </ul>
-                </nav>
+            </nav>
         </div>
     )
 }

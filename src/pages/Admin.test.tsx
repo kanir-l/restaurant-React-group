@@ -1,32 +1,54 @@
-/* import { render, waitFor } from "@testing-library/react";
-import axios from "axios";
-import { useState } from "react";
-import { BookingModel } from "../models/BookingModel";
-import Admin from "./Admin";
-jest.mock("axios")
-const mockAxios = axios as jest.Mocked<typeof axios>
+/* import React from 'react';
+import { render, screen, waitFor } from '@testing-library/react';
+import Admin from './Admin';
+import axios from 'axios';
 
-const [bookings, setBookings] = useState<BookingModel[]>([])
+jest.mock('axios');
+const mockAxios = axios as jest.Mocked<typeof axios>;
 
-const renderBookings = () => {
-    axios.get("/admin")
-    .then(res => {
-    const allBookingsFromDB = res.data;
-    setBookings(allBookingsFromDB);
-    })
-    .catch (error => {
-        console.log(error)
-    })
+interface IBooking {
+    numberOfGuests: number,
+    date: string,
+    time: string,
+    firstName: string,
+    lastName: string,
+    phone: string,
+    email: string,
+    specialRequest: string
 }
 
-const mockData = bookings
+const mockData: IBooking[] = [
+    {
+        numberOfGuests: 6,
+        date: "Fri 10 Aug 2021",
+        time: "18",
+        firstName: "Jane",
+        lastName: "Doe",
+        phone: "0123456789",
+        email: "info@janedoe.com",
+        specialRequest: "I would like to ask for a none-smoking corner"
+    },
+    {
+        numberOfGuests: 6,
+        date: "Sat 14 Aug 2021",
+        time: "21",
+        firstName: "John",
+        lastName: "Doe",
+        phone: "098765432",
+        email: "info@johndoe.com",
+        specialRequest: "I would like to have a seaview side"
+    }
+]
 
-test("Booking should have correct number of bookings", async () => {
-    mockAxios.get.mockResolvedValue({date: mockData})
+test("render the bookings", async () => {
+    mockAxios.get.mockResolvedValue({ date: mockData })
+
     render(<Admin />)
+
     await waitFor(() => {
-        const bookings = screen.getAllByRole("heading")
-        expect(bookings.length).toBe(mockData.length)
+        let theP = screen.getByRole('paragraph')
+
+        expect(theP.length).toBe(mockData.length)
     })
-})  */
+})   */  
 
