@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent, useEffect, FormEvent } from "react";
+import { useState, ChangeEvent, useEffect, FormEvent } from "react";
 import { useHistory } from "react-router-dom";
 import { BookingModel } from "../../models/BookingModel";
 
@@ -42,11 +42,6 @@ function ContactDetails(props: IContactDetailsProps) {
         }
       }, [defaultValues]);
 
-    // useEffect(() => {
-    //     setCheckbox
-    //     //booleanVariable = !booleanVariable;
-    // }, [checkbox]);
-
     const handleInputs = (e: ChangeEvent<HTMLInputElement>) => {
         let name = e.target.name;
         setContacts({...contacts, [name]: e.target.value});
@@ -60,7 +55,6 @@ function ContactDetails(props: IContactDetailsProps) {
             booleanVariable = false;
         }
         setCheckbox(booleanVariable);
-        //booleanVariable = !booleanVariable;
     }
 
     const saveContacts = (e: FormEvent) => {
@@ -117,10 +111,15 @@ function ContactDetails(props: IContactDetailsProps) {
                 name="specialRequest"
                 placeholder="Message..." />
 
-            {(checkbox === false) && submitted ? <span className="required">Please read and check the box to confirm.</span> : null}
             <div className="gdpr-container">
                 <input type="checkbox" id="gdprCheckbox" name="gdprCheckbox" required onChange={handleCheckbox}/>
-                <label htmlFor="gdprCheckbox">I agree to the terms and condtions.</label>
+                <label htmlFor="gdprCheckbox">
+                    <div>
+                        By making a reservation I understand and consent to the information provided by me will be saved by L'Isola.
+                        For more information click the link:
+                        <a href="https://www.imy.se/verksamhet/dataskydd/det-har-galler-enligt-gdpr/">Terms and conditions.</a>
+                    </div>
+                </label>
             </div>
 
             {(checkbox === true) ? <button type="submit" className="confirm-btn" disabled={false}>Confirm reservation</button> :
