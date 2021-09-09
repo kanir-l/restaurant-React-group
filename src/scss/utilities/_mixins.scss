@@ -46,3 +46,15 @@
     padding: 0;
     cursor: pointer;
 }
+
+@mixin message {
+    min-height: 20vh;
+    @include flexCenter(column);
+    text-align: center;
+    h3 {
+        text-transform: uppercase;
+    }
+    @media screen and(min-width: 1024px) {
+        font-size: 20px;
+    }
+}
