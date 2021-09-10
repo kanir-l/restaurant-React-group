@@ -1,0 +1,29 @@
+@import "../utilities/mixins";
+@import "../utilities/variables";
+.confirmation-container {
+    height: 100%;
+    .confirmation-img {
+        width: 100vw;
+        height: 40vh;
+        object-fit: cover;
+    }
+    .confirmation {
+        @include message;
+        min-height: 40vh;
+    }
+}
+
+//Media queries
+@media screen and(min-width: 1024px) {
+    .confirmation-container {
+        display: flex;
+        flex-direction: row;
+        .confirmation-img {
+            width: 50vw;
+            min-height: 90vh;
+        }
+        .confirmation {
+            width: 50vw;
+        }
+    }
+}

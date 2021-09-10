@@ -1,0 +1,85 @@
+@import "../utilities/mixins";
+@import "../utilities/variables";
+.header-container {
+    width: 100%;
+    height: 10vh;
+    @include flexCenter(row);
+    justify-content: space-between;
+    font-weight: 700;
+    padding: 1rem;
+    background-color: white;
+    .logo {
+        color: $main-clr;
+        text-transform: uppercase;
+        font-size: 16px;
+    }
+    nav {
+        text-transform: uppercase;
+        ul {
+            li {
+                .nav-link {
+                    color: $main-clr;
+                    letter-spacing: 2px;
+                }
+            }
+        }
+    }
+    .desktop-nav {
+        display: none;
+    }
+    .mobile-nav {
+        .close,
+        .hamburger {
+            position: absolute;
+            right: 1rem;
+            top: 1.2rem;
+            cursor: pointer;
+            color: $main-clr;
+        }
+        .close {
+            font-size: 150%;
+        }
+        .hamburger {
+            font-size: 150%;
+        }
+        ul {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            background-color: white;
+            right: 0;
+            height: 35%;
+            width: 100%;
+            padding: 1rem;
+            li {
+                padding-top: 2rem;
+                font-size: 16px;
+            }
+        }
+    }
+}
+
+//Media queries
+@media screen and(min-width: 1024px) {
+    .header-container {
+        height: 12vh;
+        .logo {
+            font-size: 36px;
+            font-weight: 700;
+            padding-left: 1rem;
+        }
+        .mobile-nav {
+            display: none;
+        }
+        .desktop-nav {
+            @include flexCenter(row);
+            ul {
+                li {
+                    display: inline-block;
+                    padding: 1rem;
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+}

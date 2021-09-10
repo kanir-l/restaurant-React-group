@@ -1,0 +1,64 @@
+@import "../utilities/mixins";
+@import "../utilities/variables";
+.admin-container {
+    @include flexCenter(column);
+    width: 100%;
+    .booking-container {
+        @include flexCenter(column);
+        .booking-box {
+            border: 3px solid lightgray;
+            border-radius: 5px;
+            display: flex;
+            flex-direction: (column);
+            align-items: center;
+            justify-content: space-between;
+            padding: 2rem;
+            margin: 1rem;
+            .edit-delete {
+                .edit-btn,
+                .delete-btn {
+                    @include icon-btn;
+                }
+            }
+            .booking {
+                @include flexLeft(column);
+                b {
+                    @include instruction;
+                    margin-right: 1rem;
+                }
+                .edit-guest-input {
+                    border: none;
+                    padding: 5px;
+                    border-radius: 5px;
+                }
+                .calendar-btn {
+                    @include main-btn;
+                    background-color: white;
+                    color: black;
+                    font-size: 10px;
+                    margin: 0 1rem;
+                    padding: 1rem;
+                }
+            }
+        }
+    }
+}
+
+//Media queries
+@media screen and(min-width: 1024px) {
+    .admin-container {
+        .booking-container {
+            .booking-box {
+                width: 50vw;
+                flex-direction: (row);
+                .booking {
+                    .sorry-box {
+                        min-height: 30vh;
+                        font-size: 16px;
+                        align-items: start;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,26 @@
+@import "../utilities/mixins";
+@import "../utilities/variables";
+.cancel-booking {
+    border-radius: 5px;
+    display: flex;
+    flex-direction: (column);
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem;
+    margin: 1rem 1rem 1.5rem 1rem;
+    .booking {
+        @include flexLeft(column);
+        b {
+            @include instruction;
+            margin-right: 1rem;
+        }
+    }
+}
+
+//Media queries
+@media screen and(min-width: 1024px) {
+    .cancel-booking {
+        flex-direction: (row);
+        @include flexCenter(column);
+    }
+}

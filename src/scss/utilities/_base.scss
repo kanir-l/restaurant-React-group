@@ -1,0 +1,62 @@
+@import "./variables";
+@import "./mixins";
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: $heading-font, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    min-height: 100vh;
+    text-rendering: optimizeLegibility;
+    background-color: $main-bg-clr;
+}
+
+.logo,
+li,
+a {
+    text-decoration: none;
+    color: $main-clr;
+    list-style: none;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+h4 {
+    @include instruction;
+}
+
+.main-btn {
+    @include main-btn;
+}
+
+.main-btn-disabled {
+    @include main-btn-disabled;
+}
+
+.back-btn {
+    @include icon-btn;
+}
+
+//Media queries
+@media screen and(min-width: 1024px) {
+    .back-btn {
+        margin: 2rem 0 1rem 3rem;
+    }
+    .main-btn {
+        margin: 3rem;
+    }
+    .main-btn-disabled {
+        margin: 3rem;
+    }
+}

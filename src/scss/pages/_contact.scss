@@ -1,0 +1,46 @@
+@import "../utilities/mixins";
+@import "../utilities/variables";
+.contact-container {
+    height: 100%;
+    .contact-img {
+        width: 100vw;
+        height: 40vh;
+        object-fit: cover;
+        object-position: 50% 80%;
+    }
+    .contact {
+        @include flexLeft(column);
+        padding: 0 0 2rem 2rem;
+        h2,
+        h3 {
+            text-align: left;
+            text-transform: uppercase;
+        }
+        span {
+            @include instruction;
+            margin-right: 1rem;
+        }
+        .map {
+            width: 90%;
+            height: 30vh;
+            border: none;
+            border-radius: 10px;
+            margin: 2rem 0;
+        }
+    }
+}
+
+//Media queries
+@media screen and(min-width: 1024px) {
+    .contact-container {
+        display: flex;
+        flex-direction: row;
+        .contact-img {
+            width: 50vw;
+            min-height: 90vh;
+        }
+        .contact {
+            width: 50vw;
+        }
+    }
+}

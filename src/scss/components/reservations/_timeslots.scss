@@ -1,0 +1,30 @@
+@import "../../utilities/mixins";
+@import "../../utilities/variables";
+.timeslot-container {
+    padding: 0 2rem;
+    .sorry-box {
+        @include message;
+    }
+    form {
+        padding-top: 1rem;
+        input {
+            cursor: pointer;
+        }
+        label {
+            padding: .5rem;
+        }
+        .greyed-out {
+            color: #c6c5c5;
+        }
+    }
+}
+
+//Media queries
+@media screen and(min-width: 1024px) {
+    .timeslot-container {
+        padding: 0 3rem;
+        .sorry-box {
+            min-height: 80vh;
+        }
+    }
+}

@@ -1,0 +1,20 @@
+//// Components ////
+@import "./scss/components/footer";
+@import "./scss/components/header";
+/// Components/Reservations ////
+@import "./scss/components/reservations/inputguests";
+@import "./scss/components/reservations/contactdetails";
+@import "./scss/components/reservations/inputdate";
+@import "./scss/components/reservations/summary";
+@import "./scss/components/reservations/timeslots";
+//// Pages //////
+@import "./scss/pages/admin";
+@import "./scss/pages/confirmation";
+@import "./scss/pages/contact";
+@import "./scss/pages/reservation";
+@import "./scss/pages/start";
+@import "./scss/pages/cancelbooking";
+//// Utilities ////
+@import "./scss/utilities/base";
+@import "./scss/utilities/mixins";
+@import "./scss/utilities/variables";

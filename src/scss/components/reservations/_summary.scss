@@ -1,0 +1,19 @@
+@import "../../utilities/mixins";
+@import "../../utilities/variables";
+.summary-container {
+    padding: 0 2rem;
+    @include flexLeft(column);
+    p {
+        span {
+            @include instruction;
+            padding-right: 1rem;
+        }
+    }
+}
+
+//Media queries
+@media screen and(min-width: 1024px) {
+    .summary-container {
+        padding: 0 3rem;
+    }
+}

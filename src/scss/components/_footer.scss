@@ -1,0 +1,25 @@
+@import "../utilities/mixins";
+@import "../utilities/variables";
+.footer {
+    width: 100%;
+    height: 10vh;
+    @include flexCenter(row);
+    background-color: #120d0d;
+    position: relative;
+    .social-media {
+        margin: 1rem;
+        color: white;
+        font-size: 200%;
+    }
+}
+
+//Media queries
+@media screen and(min-width: 1024px) {
+    .footer {
+        height: 25vh;
+        .social-media {
+            font-size: 150%;
+            margin-right: 3rem;
+        }
+    }
+}
