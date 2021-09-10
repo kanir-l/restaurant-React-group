@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { BookingModel } from '../models/BookingModel'
-//import InputGuests from '../components/reservations/InputGuests'
 import InputDate from '../components/reservations/InputDate'
 import TimeSlots from '../components/reservations/TimeSlots'
 import ContactDetails from '../components/reservations/ContactDetails'
@@ -102,13 +101,14 @@ function Admin() {
         })  
     }
 
-    //--//
+   // State to show calendar when button is clicked
     
     const [calendar, setCalendar] = useState<boolean>(false) 
     const showCalendar = () => {
         setCalendar(!calendar)
     }
 
+    // State to show original booking time
     const [showDefaultTime, setShowDefaultTime] = useState<boolean>(true)
  
     interface IAvailability {
@@ -116,13 +116,16 @@ function Admin() {
         slot2: boolean;
     }
 
+    // State to show available timeslots
     const [availability, setAvailability] = useState<IAvailability>({
         slot1: false,
         slot2: false
     })
 
+    // State to determine if API response has been received
     const [responseReceived, setResponseReceived] = useState(false);
 
+    // Function to check availability with API for updated values
     const sendingGuestsAndDate = () => {
         axios.get("/admin/checkingAvailabilityEdit", {
             params: {
@@ -148,7 +151,7 @@ function Admin() {
         window.location.href = `http://localhost:3000/admin/${id}`
     }
   
-    // * All bookings HTML form *//
+    // Render all existing bookings in admin
     const printAllBookings = bookings.map(booking => {
         return(
             <React.Fragment key={booking._id}>

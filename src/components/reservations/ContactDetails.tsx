@@ -32,7 +32,7 @@ function ContactDetails(props: IContactDetailsProps) {
     });
 
     const [submitted, setSubmitted] = useState(false);
-    const [valid, setValid] = useState(false);
+  
     const [checkbox, setCheckbox] = useState(false);
 
     const defaultValues = props.defaultValues
@@ -61,7 +61,7 @@ function ContactDetails(props: IContactDetailsProps) {
         e.preventDefault();
         setSubmitted(true);
         if(contacts.firstName && contacts.lastName && contacts.phone && contacts.email && (checkbox === true)) {
-            setValid(true);
+           
             props.contactDetails(contacts.firstName, contacts.lastName, contacts.phone, contacts.email, contacts.specialRequest);
             const submitRedirectUrl = props.submitRedirectUrl
             history.push(submitRedirectUrl) 
