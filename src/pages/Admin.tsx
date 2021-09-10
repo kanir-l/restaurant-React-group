@@ -43,11 +43,12 @@ function Admin() {
         axios.delete(adminDeleteUrl)
         .then(response => {
             console.log(response);
+            renderBookings();
         })
         .catch(error => {
             console.log(error)
         })
-        renderBookings()
+        
     }
 
     const [editId, setEditId] = useState<number>()

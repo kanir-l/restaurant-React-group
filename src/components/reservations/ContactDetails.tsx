@@ -112,7 +112,7 @@ function ContactDetails(props: IContactDetailsProps) {
                 placeholder="Message..." />
 
             <div className="gdpr-container">
-                <input type="checkbox" id="gdprCheckbox" name="gdprCheckbox" required onChange={handleCheckbox}/>
+                <input type="checkbox" id="gdprCheckbox" name="gdprCheckbox" onChange={handleCheckbox}/>
                 <label htmlFor="gdprCheckbox">
                     <div>
                         By making a reservation I understand and consent to the information provided by me will be saved by L'Isola.
@@ -120,10 +120,11 @@ function ContactDetails(props: IContactDetailsProps) {
                         <a href="https://www.imy.se/verksamhet/dataskydd/det-har-galler-enligt-gdpr/">Terms and conditions.</a>
                     </div>
                 </label>
+                {(checkbox === false) ? <span className="required">You need to consent to the terms and conditions.</span> : null}
             </div>
 
-            {(checkbox === true) ? <button type="submit" className="confirm-btn" disabled={false}>Confirm reservation</button> :
-            <button type="submit" className="confirm-btn" disabled={true} onClick={saveContacts}>Confirm reservation</button>}
+           
+            <button type="submit" className="confirm-btn" onClick={saveContacts}>Confirm reservation</button>
 
         </form>
         </div>
